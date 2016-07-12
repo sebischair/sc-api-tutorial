@@ -28,9 +28,11 @@ What is sociocortex and explanation how the REST API is used to communicate with
 
 Demo scenario is a simple publication management.
 
-=== Creating a workspace
-
+=== Register a user
 * Looking for existing users (GET)
+* Create User (POST)
+
+=== Creating a workspace
 
 * Looking for existing workspaces (GET)
 [source,bash]
@@ -42,60 +44,43 @@ curl -X POST https://sociocortex.com/api/workspaces
 
 * Look at result (GET)
 
-=== Creating entity types with attribute definitions
+=== Creating entity types
 
 * Creating _publication_ entity type (POST)
 
 * Creating _conference_ entity type (POST)
 
+=== Creating attribute definitions
+
+* Creating _something_ attribute defintions (POST)
+
 === Creating entities
 
 * Creating _publication_ entity (POST)
 
-=== Getting entity types and Entities
-
-* Looking for existing entities (GET)
+=== Getting entity types
 
 * Looking for existing entity types (GET)
+
+=== Getting an entity
+
+* Looking for existing entities (GET)
 
 === Getting attribute definitions
 
 * Looking for entity type with attribute definition (GET)
 
-* Looking for entity type with derived attribute definition (GET)
+=== Getting tasks and task definitions
 
-=== Getting tasks and task definitions (sentries/stages?)
+* Create Task Definition (POST)
+* Create task (POST)
 
-* Looking for entity type with attribute definition (GET)
+Set attribute (ideally bool) -> task gets completed
 
 === Searching for entities
 
 * Searching for entities with parameters (GET)
 
-=== Updating attribute definitions
-
-* Updating attribute definition (PUT)
-
-== Sociocortex angularJS library
-
-* Few words on modules (scAuth, scConnection,...)
-
-=== Installation
-
-* How to npm, bower, gulp, grunt, dependency injection
-
-=== Authentication
-
-* How to use basic auth/JwT
-
-=== Using REST API
-
-* Sample queries (GET, POST, PUT)
-
-== Discuss section
-
-* Integrate https://disqus.com/[Disqus]
-
-////
-A multi-line comment.
-////
+=== Updating entity type
+* Updating by adding new attribute definition (PUT)
+* Updating name of entity (PUT)

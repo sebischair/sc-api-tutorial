@@ -438,24 +438,19 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_getting_started_with_the_rest_api">Getting started with the REST API</a>
 <ul class="sectlevel2">
 <li><a href="#_introduction_to_demo_scenario">Introduction to demo scenario</a></li>
+<li><a href="#_register_a_user">Register a user</a></li>
 <li><a href="#_creating_a_workspace">Creating a workspace</a></li>
-<li><a href="#_creating_entity_types_with_attribute_definitions">Creating entity types with attribute definitions</a></li>
+<li><a href="#_creating_entity_types">Creating entity types</a></li>
+<li><a href="#_creating_attribute_definitions">Creating attribute definitions</a></li>
 <li><a href="#_creating_entities">Creating entities</a></li>
-<li><a href="#_getting_entity_types_and_entities">Getting entity types and Entities</a></li>
+<li><a href="#_getting_entity_types">Getting entity types</a></li>
+<li><a href="#_getting_an_entity">Getting an entity</a></li>
 <li><a href="#_getting_attribute_definitions">Getting attribute definitions</a></li>
-<li><a href="#_getting_tasks_and_task_definitions_sentries_stages">Getting tasks and task definitions (sentries/stages?)</a></li>
+<li><a href="#_getting_tasks_and_task_definitions">Getting tasks and task definitions</a></li>
 <li><a href="#_searching_for_entities">Searching for entities</a></li>
-<li><a href="#_updating_attribute_definitions">Updating attribute definitions</a></li>
+<li><a href="#_updating_entity_type">Updating entity type</a></li>
 </ul>
 </li>
-<li><a href="#_sociocortex_angularjs_library">Sociocortex angularJS library</a>
-<ul class="sectlevel2">
-<li><a href="#_installation">Installation</a></li>
-<li><a href="#_authentication">Authentication</a></li>
-<li><a href="#_using_rest_api">Using REST API</a></li>
-</ul>
-</li>
-<li><a href="#_discuss_section">Discuss section</a></li>
 </ul>
 </div>
 </div>
@@ -532,12 +527,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_a_workspace">Creating a workspace</h3>
+<h3 id="_register_a_user">Register a user</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>Looking for existing users (GET)</p>
 </li>
+<li>
+<p>Create User (POST)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_workspace">Creating a workspace</h3>
+<div class="ulist">
+<ul>
 <li>
 <p>Looking for existing workspaces (GET)</p>
 <div class="listingblock">
@@ -561,7 +566,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_entity_types_with_attribute_definitions">Creating entity types with attribute definitions</h3>
+<h3 id="_creating_entity_types">Creating entity types</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -569,6 +574,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p>Creating <em>conference</em> entity type (POST)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_attribute_definitions">Creating attribute definitions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Creating <em>something</em> attribute defintions (POST)</p>
 </li>
 </ul>
 </div>
@@ -584,14 +599,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_entity_types_and_entities">Getting entity types and Entities</h3>
+<h3 id="_getting_entity_types">Getting entity types</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Looking for existing entity types (GET)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_getting_an_entity">Getting an entity</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>Looking for existing entities (GET)</p>
-</li>
-<li>
-<p>Looking for existing entity types (GET)</p>
 </li>
 </ul>
 </div>
@@ -603,20 +625,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p>Looking for entity type with attribute definition (GET)</p>
 </li>
-<li>
-<p>Looking for entity type with derived attribute definition (GET)</p>
-</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_tasks_and_task_definitions_sentries_stages">Getting tasks and task definitions (sentries/stages?)</h3>
+<h3 id="_getting_tasks_and_task_definitions">Getting tasks and task definitions</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Looking for entity type with attribute definition (GET)</p>
+<p>Create Task Definition (POST)</p>
+</li>
+<li>
+<p>Create task (POST)</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Set attribute (ideally bool) &#8594; task gets completed</p>
 </div>
 </div>
 <div class="sect2">
@@ -630,75 +655,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_updating_attribute_definitions">Updating attribute definitions</h3>
+<h3 id="_updating_entity_type">Updating entity type</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Updating attribute definition (PUT)</p>
+<p>Updating by adding new attribute definition (PUT)</p>
 </li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sociocortex_angularjs_library">Sociocortex angularJS library</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
 <li>
-<p>Few words on modules (scAuth, scConnection,&#8230;&#8203;)</p>
+<p>Updating name of entity (PUT)</p>
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_installation">Installation</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>How to npm, bower, gulp, grunt, dependency injection</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_authentication">Authentication</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>How to use basic auth/JwT</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_using_rest_api">Using REST API</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Sample queries (GET, POST, PUT)</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_discuss_section">Discuss section</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Integrate <a href="https://disqus.com/">Disqus</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-05 12:54:01 CEST
+Last updated 2016-07-06 13:44:03 CEST
 </div>
 </div>
 </body>
