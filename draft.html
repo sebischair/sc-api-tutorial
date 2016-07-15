@@ -438,17 +438,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_getting_started_with_the_rest_api">Getting started with the REST API</a>
 <ul class="sectlevel2">
 <li><a href="#_introduction_to_demo_scenario">Introduction to demo scenario</a></li>
-<li><a href="#_register_a_user">Register a user</a></li>
+<li><a href="#_todo_authentication">TODO: Authentication</a></li>
 <li><a href="#_creating_a_workspace">Creating a workspace</a></li>
 <li><a href="#_creating_entity_types">Creating entity types</a></li>
-<li><a href="#_creating_attribute_definitions">Creating attribute definitions</a></li>
+<li><a href="#_todo_creating_attribute_definitions">TODO: Creating attribute definitions</a></li>
 <li><a href="#_creating_entities">Creating entities</a></li>
 <li><a href="#_getting_entity_types">Getting entity types</a></li>
-<li><a href="#_getting_an_entity">Getting an entity</a></li>
 <li><a href="#_getting_attribute_definitions">Getting attribute definitions</a></li>
-<li><a href="#_getting_tasks_and_task_definitions">Getting tasks and task definitions</a></li>
+<li><a href="#_getting_entities">Getting entities</a></li>
+<li><a href="#_todo_getting_tasks_and_task_definitions">TODO: Getting tasks and task definitions</a></li>
 <li><a href="#_searching_for_entities">Searching for entities</a></li>
-<li><a href="#_updating_entity_type">Updating entity type</a></li>
+<li><a href="#_todo_updating_entity_type">TODO: Updating entity type</a></li>
 </ul>
 </li>
 </ul>
@@ -459,6 +459,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>A hands-on tutorial for the <a href="https://sociocortex.com">sociocortex</a> REST API.</p>
+<div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="c5f085c61bab315e993d"></div>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
 </div>
 </div>
 </div>
@@ -523,148 +535,935 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_introduction_to_demo_scenario">Introduction to demo scenario</h3>
 <div class="paragraph">
-<p>Demo scenario is a simple publication management.</p>
+<p>The demo scenario that will serve as a real world example to demonstrate the usage of the <em>sociocortex REST API</em> is a simple publication management system.</p>
+</div>
+<div class="paragraph">
+<p>Before we can start with the actual scenario, we check that the authentication is working for your credentials and shortly outline the differences of jwt and basic auth.</p>
+</div>
+<div class="paragraph">
+<p>Once the authentication works, we create a workspace which we then use to store the required entity types in. We identify the required entity types as <em>publication</em> and <em>conference</em>.
+The latter we use to add entities, i.e. publications or conferences, to the workspace with respective entity types.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, tasks and their definitions are introduced and combined with the attribute definitions of entity types.</p>
+</div>
+<div class="paragraph">
+<p>While going through the demo scenario all HTTP verbs will be taken into account in order to make you feel comfortable with all kinds of actions necessary to interact with the <em>sociocortex REST API</em>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_register_a_user">Register a user</h3>
+<h3 id="_todo_authentication">TODO: Authentication</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>Looking for existing users (GET)</p>
 </li>
 <li>
-<p>Create User (POST)</p>
+<p>Sending requests with BASIC Auth</p>
+</li>
+<li>
+<p>Sending requests with JWT</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_creating_a_workspace">Creating a workspace</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Looking for existing workspaces (GET)</p>
+<div class="paragraph">
+<p>Before creating our first workspace we check for the currently available workspaces because who know&#8217;s, maybe someone else did the job for us already.</p>
+</div>
+<div class="paragraph">
+<p>We do this with a simple HTTP GET request on the workspaces resource. The server will respond with a list of workspaces stored. Below you see the request and response.</p>
+</div>
+<div class="sect3">
+<h4 id="_looking_for_existing_workspaces_get">Looking for existing workspaces (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -X GET https://sociocortex.com/api/workspaces</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/workspaces</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Creating workspace <em>publication management</em> (POST)</p>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">curl -X POST https://sociocortex.com/api/workspaces</code></pre>
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">[
+  {
+    "id": "944wcmiregxu",
+    "name": "sc-visualizer",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/944wcmiregxu"
+  },
+  {
+    "id": "107yhdgc7q9u6",
+    "name": "Northwind",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/107yhdgc7q9u6"
+  }
+]</code></pre>
 </div>
 </div>
-</li>
-<li>
-<p>Look at result (GET)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>We can tell that no one has yet created a publication management workspace so we continue by creating one with a HTTP POST request.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_workspace_em_publication_management_em_post">Creating workspace <em>publication management</em> (POST)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">POST https://server.sociocortex.com/api/v1/workspaces
+BODY
+{
+    "name": "Publication Management"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "id": "10sasph8dvxhg",
+  "versions": [
+    {
+      "action": "Edited",
+      "date": "2016-07-15T17:06:42.012Z",
+      "type": "_edit",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    },
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:06:41.371Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ],
+    "writers": [],
+    "readers": []
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_looking_at_a_single_workspace_get">Looking at a single workspace (GET)</h4>
+<div class="paragraph">
+<p>As we have seen in the response of the server on our POST request the workspace has been created with the id <em>10sasph8dvxhg</em>. We can easily use this id now to get this specific workspace.</p>
+</div>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "id": "10sasph8dvxhg",
+  "versions": [
+    {
+      "action": "Edited",
+      "date": "2016-07-15T17:06:42.012Z",
+      "type": "_edit",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    },
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:06:41.371Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ],
+    "writers": [],
+    "readers": []
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_creating_entity_types">Creating entity types</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Creating <em>publication</em> entity type (POST)</p>
-</li>
-<li>
-<p>Creating <em>conference</em> entity type (POST)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Now that we have created the workspace the publication management system will store its contents in we can continue by creating two entity types required to store <em>publications</em> prepared for and presented on multiple <em>conferences</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="_creating_em_publication_em_entity_type_post">Creating <em>publication</em> entity type (POST)</h4>
+<div class="paragraph">
+<p>To create an entity type in a workspace we simply concat the URI of the workspace by <em>/entityTypes</em> and use the HTTP POST method to create a new entity type <em>publication</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">POST https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes
+BODY
+{
+    "name": "Publication"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "processes": [],
+  "attributeDefinitions": [],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 0,
+  "structurednessMetric": 1,
+  "id": "dt56spnul01p",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:26:37.202Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Publication",
+  "allowFreeAttributes": false,
+  "associations": [],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_em_conference_em_entity_type_post">Creating <em>conference</em> entity type (POST)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">POST https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes
+BODY
+{
+    "name": "Conference"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "processes": [],
+  "attributeDefinitions": [],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 0,
+  "structurednessMetric": 1,
+  "id": "19c48jgd4b8m2",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:29:20.655Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Conference",
+  "allowFreeAttributes": false,
+  "associations": [],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, we have our workspace and the two required entity types set up.
+In the next steps we refine the attributes of the entity types before we start creating entities in the step after.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_creating_attribute_definitions">Creating attribute definitions</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Creating <em>something</em> attribute defintions (POST)</p>
-</li>
-</ul>
+<h3 id="_todo_creating_attribute_definitions">TODO: Creating attribute definitions</h3>
+<div class="sect3">
+<h4 id="_creating_em_something_em_attribute_definitions_post">Creating <em>something</em> attribute definitions (POST)</h4>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_creating_entities">Creating entities</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Creating <em>publication</em> entity (POST)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>To create entities of the two entity types send HTTP POST requests to their endpoints, defined by their respective id.</p>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_em_publication_em_entity_post">Creating a <em>publication</em> entity (POST)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities
+BODY
+{
+    "name": "A sample paper"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "id": "15qr31m7ewuje",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:57:06.862Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "createdAt": "2016-07-15T17:57:06.000Z",
+  "name": "A sample paper",
+  "lastModifier": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ],
+    "readers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ]
+  },
+  "attributes": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+  "lastModifiedAt": "2016-07-15T17:57:06.000Z"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_creating_a_em_conference_em_entity_post">Creating a <em>conference</em> entity (POST)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">POST https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/entities
+BODY
+{
+    "name": "A sample conference"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "19c48jgd4b8m2",
+    "name": "Conference",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "id": "24ixbhft7i4b",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T18:00:49.440Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "createdAt": "2016-07-15T18:00:49.000Z",
+  "name": "A sample conference",
+  "lastModifier": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ],
+    "readers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ]
+  },
+  "attributes": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+  "lastModifiedAt": "2016-07-15T18:00:49.000Z"
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_getting_entity_types">Getting entity types</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Looking for existing entity types (GET)</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_looking_at_all_created_entity_types_get">Looking at all created entity types (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_getting_an_entity">Getting an entity</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Looking for existing entities (GET)</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">[
+  {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  {
+    "id": "19c48jgd4b8m2",
+    "name": "Conference",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_looking_at_the_em_publication_em_entity_type_get">Looking at the <em>publication</em> entity type (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "processes": [],
+  "attributeDefinitions": [],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 0,
+  "structurednessMetric": 1,
+  "id": "dt56spnul01p",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:26:37.202Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Publication",
+  "allowFreeAttributes": false,
+  "associations": [],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_getting_attribute_definitions">Getting attribute definitions</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Looking for entity type with attribute definition (GET)</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_looking_at_attribute_definitions_of_entity_type_get">Looking at attribute definitions of entity type (GET)</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_looking_for_entity_type_with_attribute_definition_get">Looking for entity type with attribute definition (GET)</h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="_getting_tasks_and_task_definitions">Getting tasks and task definitions</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Create Task Definition (POST)</p>
-</li>
-<li>
-<p>Create task (POST)</p>
-</li>
-</ul>
+<h3 id="_getting_entities">Getting entities</h3>
+<div class="sect3">
+<h4 id="_looking_at_all_existing_entities_in_workspace_get">Looking at all existing entities in workspace (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">[
+  {
+    "id": "24ixbhft7i4b",
+    "name": "A sample conference",
+    "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b"
+  },
+  {
+    "id": "15qr31m7ewuje",
+    "name": "A sample paper",
+    "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje"
+  },
+  {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_looking_at_all_existing_entities_of_entity_type_em_publication_em_get">Looking at all existing entities of entity type <em>publication</em> (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">[
+  {
+    "id": "15qr31m7ewuje",
+    "name": "A sample paper",
+    "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje"
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_looking_at_single_entity_get">Looking at single entity (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "id": "15qr31m7ewuje",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:57:06.862Z",
+      "type": "_new",
+      "user": {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    }
+  ],
+  "createdAt": "2016-07-15T17:57:06.000Z",
+  "name": "A sample paper",
+  "lastModifier": {
+    "id": "1tng2g7qgwd3k",
+    "name": "Daniel Elsner",
+    "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ],
+    "readers": [
+      {
+        "id": "1tng2g7qgwd3k",
+        "name": "Daniel Elsner",
+        "href": "https://server.sociocortex.com/api/v1/users/1tng2g7qgwd3k"
+      }
+    ]
+  },
+  "attributes": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+  "lastModifiedAt": "2016-07-15T17:57:06.000Z"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_todo_getting_tasks_and_task_definitions">TODO: Getting tasks and task definitions</h3>
+<div class="sect3">
+<h4 id="_create_task_definition_post">Create task definition (POST)</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_create_task_post">Create task (POST)</h4>
 <div class="paragraph">
 <p>Set attribute (ideally bool) &#8594; task gets completed</p>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="_searching_for_entities">Searching for entities</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Searching for entities with parameters (GET)</p>
-</li>
-</ul>
+<div class="sect3">
+<h4 id="_searching_for_entities_in_a_workspace_get">Searching for entities in a workspace (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "results": [
+    {
+      "id": "dt56spnul01p",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "1bbxmsluu87f7",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "bqr7jmg37vqt",
+      "name": "Publication Management - Home",
+      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
+      "resourceType": "entities"
+    },
+    {
+      "id": "10sasph8dvxhg",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+      "resourceType": "workspaces"
+    },
+    {
+      "id": "19c48jgd4b8m2",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "15qr31m7ewuje",
+      "name": "A sample paper",
+      "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+      "resourceType": "entities"
+    },
+    {
+      "id": "24ixbhft7i4b",
+      "name": "A sample conference",
+      "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+      "resourceType": "entities"
+    }
+  ],
+  "totalCount": 7
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_searching_for_entities_with_filter_parameters_get">Searching for entities with filter parameters (GET)</h4>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/searchResults?text=publication&amp;workspace=10sasph8dvxhg&amp;orderBy=alphabetically</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "results": [
+    {
+      "highlightedDisambiguation": "/&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management/_",
+      "id": "24ixbhft7i4b",
+      "name": "A sample conference",
+      "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "/&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management/_",
+      "id": "15qr31m7ewuje",
+      "name": "A sample paper",
+      "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management",
+      "id": "19c48jgd4b8m2",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    },
+    {
+      "highlightedDisambiguation": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management",
+      "id": "dt56spnul01p",
+      "highlightedName": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt;",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "10sasph8dvxhg",
+      "highlightedName": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+      "resourceType": "workspaces"
+    },
+    {
+      "highlightedDisambiguation": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management",
+      "id": "bqr7jmg37vqt",
+      "highlightedName": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management - Home",
+      "name": "Publication Management - Home",
+      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "&lt;span class=\"sc-search-highlight\"&gt;Publication&lt;/span&gt; Management",
+      "id": "1bbxmsluu87f7",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    }
+  ],
+  "totalCount": 7
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_updating_entity_type">Updating entity type</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Updating by adding new attribute definition (PUT)</p>
-</li>
-<li>
-<p>Updating name of entity (PUT)</p>
-</li>
-</ul>
+<h3 id="_todo_updating_entity_type">TODO: Updating entity type</h3>
+<div class="sect3">
+<h4 id="_updating_by_adding_new_attribute_definition_put">Updating by adding new attribute definition (PUT)</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_updating_name_of_entity_put">Updating name of entity (PUT)</h4>
+
 </div>
 </div>
 </div>
@@ -672,8 +1471,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-06 13:44:03 CEST
+Last updated 2016-07-16 01:25:17 CEST
 </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<script>hljs.initHighlighting()</script>
 </body>
 </html>

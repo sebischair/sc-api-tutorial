@@ -1,0 +1,416 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Sociocortex REST API",
+		"_postman_id": "74555379-6cca-3c82-0731-788c7a7c3f5b",
+		"description": "A collection containing relevant API calls for the sociocortex REST API tutorial.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "GET JWT with BASIC AUTH",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/jwt",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET own user details with JWT",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/users/me",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0Njg2MDE2MDQsInN1YiI6IjF0bmcyZzdxZ3dkM2siLCJuYW1lIjoiRGFuaWVsIEVsc25lciJ9.a29GFukKwpd4G40KpAufJdDRViOiLwkYj14A2kPVLjaOccbgQLHysiAAzxWACyom-W2rGwGuffUqU-Zo2z17vAPln954_qKAKaGQ9Mk_qCumy6Q7aAG4Awh3mhBZ2GkcHNCVOt1aWG4UntCZqpDQdyNhKZ9ZLQuW8UFXFHDE7HU",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all users with BASIC AUTH",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/users",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"testuser\",\n\"password\":\"123\",\n\"email\": \"Siturls1933@dayrep.com\",\n\"description\": \"testdesc\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entity",
+			"description": "",
+			"item": [
+				{
+					"name": "POST entity of entity type Publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"A sample paper\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST entity of entity type Conference",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/entities",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"A sample conference\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all entities in workspace Publication Management",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all entities of entity type Publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET single entity",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EntityType",
+			"description": "",
+			"item": [
+				{
+					"name": "POST entityType Publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Publication\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST entity type Conference",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Conference\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all entity types for workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET single entity type Publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"description": "",
+			"item": [
+				{
+					"name": "GET search for entities in workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET search for entities with parameters",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/searchResults?text=publication&workspace=10sasph8dvxhg&orderBy=alphabetically",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Workspace",
+			"description": "",
+			"item": [
+				{
+					"name": "GET all workspaces",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Publication Management\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET single workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
