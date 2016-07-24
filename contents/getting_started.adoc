@@ -1,0 +1,47 @@
+=== Introduction to demo scenario
+
+include::getting_started/introduction.adoc[]
+
+=== Authentication
+
+include::getting_started/authentication.adoc[]
+
+=== Creating a workspace
+
+include::getting_started/create_workspace.adoc[]
+
+=== Creating entity types
+
+include::getting_started/create_entity_type.adoc[]
+
+=== Creating attribute definitions
+
+include::getting_started/create_attribute_def.adoc[]
+
+=== Creating entities
+
+include::getting_started/create_entity.adoc[]
+
+=== Getting entity types
+
+include::getting_started/get_entity_type.adoc[]
+
+=== Getting attribute definitions
+
+include::getting_started/get_attribute_def.adoc[]
+
+=== Getting entities
+
+include::getting_started/get_entity.adoc[]
+
+=== Tasks and task definitions
+
+include::getting_started/tasks.adoc[]
+
+=== Updating entity types / entities
+
+include::getting_started/update_entity_type.adoc[]
+
+=== Request/Response
+
+include::getting_started/req_resp.adoc[]

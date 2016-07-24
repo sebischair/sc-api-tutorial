@@ -1,0 +1,124 @@
+_Sociocortex_ offers the possibility to create custom attribute definitions for attributes of entity types. This is a common task and you can make use of the attribute types introduced in <<Concepts>> or define relations between entity types.
+
+==== Creating text attributes (POST)
+
+The simplest attribute defintion type is surely a text attribute. We create a text attribute _Abstract_ which should store the abstract of a _publication_. Therefore we send a HTTP POST request on the attribute definitions of the respective entity type - in this case the _publication_.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/attributeDefinitions
+BODY
+{
+    "name": "Abstract",
+    "multiplicity": "maximalOne",
+    "attributeType": "Text"
+}
+
+*Response:*
+[source, json]
+{
+  "id": "2gegqgdueyqd",
+  "versions": [],
+  "readOnly": false,
+  "name": "Abstract",
+  "multiplicity": "maximalOne",
+  "attributeType": "Text",
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/2gegqgdueyqd"
+}
+
+More attribute definitions of the various types are created in the next sections.
+For the matter of simplicity, we leave out the responses for the following requests.
+
+==== Creating numeric attributes (POST)
+
+Every conference needs a year in which it is taking place. We use a numeric attribute respectively:
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/attributeDefinitions
+BODY
+{
+    "name": "Year",
+    "multiplicity": "maximalOne",
+    "attributeType": "Number"
+}
+
+==== Creating enumeration attributes (POST)
+
+Every publication needs one of the statuses: Planned, Submitted, Accepted. We will create an attribute defintion of type enum to realize this.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/attributeDefinitions
+BODY
+{
+    "name": "Status",
+    "multiplicity": "maximalOne",
+    "attributeType": "Enumeration",
+    "options": {
+        "enumerationValues": [
+          "Planned",
+          "Submitted",
+          "Accepted"
+        ]
+    }
+}
+
+Conferences also require an enum attribute - the rank of the conference:
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/attributeDefinitions
+BODY
+{
+    "name": "Rank",
+    "multiplicity": "maximalOne",
+    "attributeType": "Enumeration",
+    "options": {
+        "enumerationValues": [
+          "A",
+          "B",
+          "C"
+        ]
+    }
+}
+
+==== Creating relation attributes (POST)
+
+A simple example for a relation among two entity types is an _acceptedIn_ relation for publications. Once they are accepted by a conference the conferences are stored in this attribute.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/attributeDefinitions
+BODY
+{
+    "name": "acceptedIn",
+    "multiplicity": "any",
+    "attributeType": "Link",
+    "options": {
+        "entityType": {
+          "id": "19c48jgd4b8m2"
+        },
+        "resourceType": "entities"
+    }
+}
+
+Another straightforward relation is the mapping of authors to publications:
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/attributeDefinitions
+BODY
+{
+    "name": "authors",
+    "multiplicity": "any",
+    "attributeType": "Link",
+    "options": {
+        "resourceType": "users"
+    }
+}

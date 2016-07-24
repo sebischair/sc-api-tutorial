@@ -1,0 +1,369 @@
+As we have created two entity types with respective instances, it might be interesting to query these types and their attribute definitions.
+The _sociocortex REST API_ offers the possibility to further refine queries by query parameters, e.g. by specifying desired attributes or meta attributes. A more detailed description can be found in <<Query Parameters>>.
+
+==== Looking at all created entity types (GET)
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes
+
+*Response:*
+[source,json]
+[
+  {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  {
+    "id": "19c48jgd4b8m2",
+    "name": "Conference",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  }
+]
+
+If more specific information about these entity types is required, we simply add the query parameter _meta_ with value _*_ :
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes?meta=*
+
+*Response:*
+[source,json]
+[
+  {
+    "processes": [],
+    "attributeDefinitions": [
+      {
+        "id": "2gegqgdueyqd",
+        "versions": [],
+        "readOnly": false,
+        "name": "Abstract",
+        "multiplicity": "maximalOne",
+        "attributeType": "Text",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/2gegqgdueyqd"
+      },
+      {
+        "id": "1knrlnoj7kjer",
+        "versions": [],
+        "readOnly": false,
+        "name": "acceptedIn",
+        "multiplicity": "any",
+        "attributeType": "Link",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer",
+        "options": {
+          "entityType": {
+            "id": "19c48jgd4b8m2",
+            "name": "Conference",
+            "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+          },
+          "resourceType": "entities"
+        }
+      },
+      {
+        "id": "18b1hu00gnxdi",
+        "versions": [],
+        "readOnly": false,
+        "name": "authors",
+        "multiplicity": "any",
+        "attributeType": "Link",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/18b1hu00gnxdi",
+        "options": {
+          "resourceType": "users"
+        }
+      },
+      {
+        "id": "mfpco2wx3zqp",
+        "versions": [],
+        "readOnly": false,
+        "name": "Status",
+        "multiplicity": "maximalOne",
+        "attributeType": "Enumeration",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/mfpco2wx3zqp",
+        "options": {
+          "enumerationValues": [
+            "Planned",
+            "Submitted",
+            "Accepted"
+          ]
+        }
+      }
+    ],
+    "taskDefinitions": [],
+    "workspace": {
+      "id": "10sasph8dvxhg",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+    },
+    "entitiesCount": 6,
+    "structurednessMetric": 1,
+    "id": "dt56spnul01p",
+    "versions": ["..."],
+    "consistencyMetric": 1,
+    "derivedAttributeDefinitions": [],
+    "name": "Publication",
+    "allowFreeAttributes": false,
+    "associations": [
+      {
+        "id": "1knrlnoj7kjer",
+        "versions": [],
+        "readOnly": false,
+        "name": "acceptedIn",
+        "multiplicity": "any",
+        "attributeType": "Link",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer",
+        "options": {
+          "entityType": {
+            "id": "19c48jgd4b8m2",
+            "name": "Conference",
+            "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+          },
+          "resourceType": "entities"
+        }
+      }
+    ],
+    "incomingAssociations": [],
+    "customFunctions": [],
+    "mayEdit": true,
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  {
+    "processes": [],
+    "attributeDefinitions": [
+      {
+        "id": "5ybnu95cmhfq",
+        "versions": [],
+        "readOnly": false,
+        "name": "Rank",
+        "multiplicity": "maximalOne",
+        "attributeType": "Enumeration",
+        "entityType": {
+          "id": "19c48jgd4b8m2",
+          "name": "Conference",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/5ybnu95cmhfq",
+        "options": {
+          "enumerationValues": [
+            "A",
+            "B",
+            "C"
+          ]
+        }
+      },
+      {
+        "id": "m4kghlbyf1e5",
+        "versions": [],
+        "readOnly": false,
+        "name": "Year",
+        "multiplicity": "maximalOne",
+        "attributeType": "Number",
+        "entityType": {
+          "id": "19c48jgd4b8m2",
+          "name": "Conference",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/m4kghlbyf1e5"
+      }
+    ],
+    "taskDefinitions": [],
+    "workspace": {
+      "id": "10sasph8dvxhg",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+    },
+    "entitiesCount": 5,
+    "structurednessMetric": 1,
+    "id": "19c48jgd4b8m2",
+    "versions": ["..."],
+    "consistencyMetric": 1,
+    "derivedAttributeDefinitions": [],
+    "name": "Conference",
+    "allowFreeAttributes": false,
+    "associations": [],
+    "incomingAssociations": [
+      {
+        "id": "1knrlnoj7kjer",
+        "versions": [],
+        "readOnly": false,
+        "name": "acceptedIn",
+        "multiplicity": "any",
+        "attributeType": "Link",
+        "entityType": {
+          "id": "dt56spnul01p",
+          "name": "Publication",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+        },
+        "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer",
+        "options": {
+          "entityType": {
+            "id": "19c48jgd4b8m2",
+            "name": "Conference",
+            "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+          },
+          "resourceType": "entities"
+        }
+      }
+    ],
+    "customFunctions": [],
+    "mayEdit": true,
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  }
+]
+
+==== Looking at the _publication_ entity type (GET)
+
+To retrieve details about a single entity we add the respective id to the URI.
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p
+
+*Response:*
+[source,json]
+{
+  "processes": [],
+  "attributeDefinitions": [
+    {
+      "id": "2gegqgdueyqd",
+      "versions": [],
+      "readOnly": false,
+      "name": "Abstract",
+      "multiplicity": "maximalOne",
+      "attributeType": "Text",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/2gegqgdueyqd"
+    },
+    {
+      "id": "1knrlnoj7kjer",
+      "versions": [],
+      "readOnly": false,
+      "name": "acceptedIn",
+      "multiplicity": "any",
+      "attributeType": "Link",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer",
+      "options": {
+        "entityType": {
+          "id": "19c48jgd4b8m2",
+          "name": "Conference",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+        },
+        "resourceType": "entities"
+      }
+    },
+    {
+      "id": "18b1hu00gnxdi",
+      "versions": [],
+      "readOnly": false,
+      "name": "authors",
+      "multiplicity": "any",
+      "attributeType": "Link",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/18b1hu00gnxdi",
+      "options": {
+        "resourceType": "users"
+      }
+    },
+    {
+      "id": "mfpco2wx3zqp",
+      "versions": [],
+      "readOnly": false,
+      "name": "Status",
+      "multiplicity": "maximalOne",
+      "attributeType": "Enumeration",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/mfpco2wx3zqp",
+      "options": {
+        "enumerationValues": [
+          "Planned",
+          "Submitted",
+          "Accepted"
+        ]
+      }
+    }
+  ],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 6,
+  "structurednessMetric": 1,
+  "id": "dt56spnul01p",
+  "versions": ["..."],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Publication",
+  "allowFreeAttributes": false,
+  "associations": [
+    {
+      "id": "1knrlnoj7kjer",
+      "versions": [],
+      "readOnly": false,
+      "name": "acceptedIn",
+      "multiplicity": "any",
+      "attributeType": "Link",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer",
+      "options": {
+        "entityType": {
+          "id": "19c48jgd4b8m2",
+          "name": "Conference",
+          "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+        },
+        "resourceType": "entities"
+      }
+    }
+  ],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+}

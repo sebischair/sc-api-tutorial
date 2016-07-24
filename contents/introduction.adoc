@@ -1,0 +1,9 @@
+=== Motivation
+
+What is sociocortex and explanation how the REST API is used to communicate with the platform in client applications.
+
+=== Concepts
+* Architecture (Layers)
+* Class Hierarchy (Entities, Workspaces, Tasks, etc.)
+* Basic types in sociocortex (Numbers, String, Enum, Date, etc.)
+* Usage (server.sociocortex (CM?), REST API, sc-angular, modeler, visualizer) (?)

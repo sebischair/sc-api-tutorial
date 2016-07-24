@@ -1,0 +1,33 @@
+= Sociocortex Tutorial
+Daniel Elsner <daniel.elsner@tum.de>
+:toc: left
+:source-highlighter: highlightjs
+:sectanchors: true
+:sectlinks: true
+:sectnums: true
+
+A hands-on tutorial for the https://sociocortex.com[sociocortex] REST API.
+
+== Introduction
+
+include::contents/introduction.adoc[]
+
+== Configuration
+
+include::contents/configuration.adoc[]
+
+== Getting started with the REST API
+
+include::contents/getting_started.adoc[]
+
+== Permisssions
+
+include::contents/permissions.adoc[]
+
+== Query Parameters
+
+include::contents/query_parameters.adoc[]
+
+== Searching
+
+include::contents/searching.adoc[]

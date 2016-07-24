@@ -1,0 +1,5 @@
+* query parameters - list vs. single (Attribute alle dabei)
+* attributes (leer lassen nicht erklären) (* oder , getrennt)
+* meta
+* content
+* task

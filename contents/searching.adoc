@@ -1,0 +1,122 @@
+
+=== Searching for entities
+
+==== Searching for entities in a workspace (GET)
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg
+
+*Response:*
+[source,json]
+{
+  "results": [
+    {
+      "id": "dt56spnul01p",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "1bbxmsluu87f7",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "bqr7jmg37vqt",
+      "name": "Publication Management - Home",
+      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
+      "resourceType": "entities"
+    },
+    {
+      "id": "10sasph8dvxhg",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+      "resourceType": "workspaces"
+    },
+    {
+      "id": "19c48jgd4b8m2",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "15qr31m7ewuje",
+      "name": "A sample paper",
+      "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+      "resourceType": "entities"
+    },
+    {
+      "id": "24ixbhft7i4b",
+      "name": "A sample conference",
+      "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+      "resourceType": "entities"
+    }
+  ],
+  "totalCount": 7
+}
+
+==== Searching for entities with filter parameters (GET)
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchResults?text=publication&workspace=10sasph8dvxhg&orderBy=alphabetically
+
+*Response:*
+[source,json]
+{
+  "results": [
+    {
+      "highlightedDisambiguation": "/<span class=\"sc-search-highlight\">Publication</span> Management/_",
+      "id": "24ixbhft7i4b",
+      "name": "A sample conference",
+      "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "/<span class=\"sc-search-highlight\">Publication</span> Management/_",
+      "id": "15qr31m7ewuje",
+      "name": "A sample paper",
+      "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
+      "id": "19c48jgd4b8m2",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    },
+    {
+      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
+      "id": "dt56spnul01p",
+      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span>",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "10sasph8dvxhg",
+      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span> Management",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+      "resourceType": "workspaces"
+    },
+    {
+      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
+      "id": "bqr7jmg37vqt",
+      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span> Management - Home",
+      "name": "Publication Management - Home",
+      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
+      "resourceType": "entities"
+    },
+    {
+      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
+      "id": "1bbxmsluu87f7",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    }
+  ],
+  "totalCount": 7
+}

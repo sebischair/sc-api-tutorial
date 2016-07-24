@@ -1,0 +1,85 @@
+In order to get started with _sociocortex_, we first need to create an account to be able to create an own workspace as well as other entities.
+
+==== Registering a new user (POST)
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/users
+BODY
+{
+    "name":"$NAME",
+    "email":"$EMAIL@ADDRESS.com",
+    "password":"$PASSWORD"
+}
+
+*Response:*
+[source,json]
+{
+  "isVerified": false,
+  "locale": "de-DE",
+  "mayCreateWorkspace": false,
+  "mayCreateGroup": false,
+  "id": "$ID",
+  "versions": [],
+  "email": "$EMAIL@ADDRESS.com",
+  "name": "$NAME",
+  "href": "https://server.sociocortex.com/api/v1/users/$ID",
+  "mayEdit": true,
+  "isAdministrator": false,
+  "mayCreateUser": false,
+  "groups": []
+}
+
+After having successfully send this information to the server, we check the respective provided email account for an email containing an activation link for _sociocortex_.
+
+image::assets/activation_email.png[Email]
+
+Once we click the link in the email, the account is activated and we are ready to go.
+
+==== Log in to _sociocortex_
+
+There are two ways to log in to _sociocortex_, either by HTTP Basic authentication or by using JSON Web Tokens (JWT, https://jwt.io/). Throughout this tutorial we will be using the predefined HTTP requests from the Postman-Collection. Therefore, we encourage you to simply replace the placeholder "$TOKEN" in all the Postman requests with your own JWT (see <<JWT>>).
+
+===== Basic Auth
+
+Basic Auth requires to send a respective HTTP Authorization Header in every request to the server. This Authorization Header contains a username and password combined with a single colon and base64-encoded with a "Basic" prefix, denoting the authorization method. Thus, it does not require any cookies, session identifiers or tokens provided and signed by the server.
+
+An example request to get a users details could be the following:
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/users/me
+Authorization: Basic $BASE64_ENCODED_CREDENTIALS
+
+===== JWT
+
+A JWT can be received by providing the credentials to the server in the payload of a HTTP POST request. The token has an expiry date in its payload as well as user information.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/jwt
+BODY
+{
+    "username":"$EMAIL@ADDRESS.com",
+    "password":"$PASSWORD"
+}
+
+*Response:*
+[source,json]
+{
+  "token": "$TOKEN",
+  "payload": {
+    "exp": "$EXPIRY_DATE",
+    "sub": "$USER_ID",
+    "name": "$NAME"
+  }
+}
+
+After having received the token, the token is sent with every request on access-restricted resources in a respective HTTP Authorization Header with the prefix "Bearer".
+
+An example request to get a users details could be the following:
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/users/me
+Authorization: Bearer $TOKEN

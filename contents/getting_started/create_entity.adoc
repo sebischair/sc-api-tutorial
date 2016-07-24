@@ -1,0 +1,215 @@
+To create entities of the two entity types send HTTP POST requests to the types' endpoints, defined by their respective id.
+
+==== Creating a _conference_ entity (POST)
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/entities
+BODY
+{
+    "name": "International Conference on Software Engineering (ICSE)",
+    "attributes":[
+        {
+            "name":"Rank",
+            "values":["A"]
+        },
+        {
+            "name":"Year",
+            "values":[2016]
+        }
+    ]
+}
+
+*Response:*
+[source,json]
+{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "19c48jgd4b8m2",
+    "name": "Conference",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "n6eidlmr0by7",
+  "versions": ["..."],
+  "createdAt": "2016-07-24T11:12:00.000Z",
+  "name": "International Conference on Software Engineering (ICSE)",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "pme5rnjsvx5z",
+      "values": [
+        "A"
+      ],
+      "name": "Rank",
+      "href": "https://server.sociocortex.com/api/v1/attributes/pme5rnjsvx5z"
+    },
+    {
+      "id": "voa7iqjet7pf",
+      "values": [
+        2016
+      ],
+      "name": "Year",
+      "href": "https://server.sociocortex.com/api/v1/attributes/voa7iqjet7pf"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7",
+  "lastModifiedAt": "2016-07-24T11:12:00.000Z"
+}
+
+==== Creating a _publication_ entity (POST)
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities
+BODY
+{
+    "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+    "attributes":[
+        {
+            "name":"acceptedIn",
+            "values":[{"id":"n6eidlmr0by7"}]
+        },
+        {
+            "name":"Abstract",
+            "values": ["Today's enterprises have to align their information systems continuously with their dynamic business and IT environment. ..."]
+        },
+        {
+            "name":"Status",
+            "values":["Accepted"]
+        },
+        {
+            "name":"authors",
+            "values":[{
+                "id":"1hda5st2csfom"
+            }]
+        }
+    ]
+}
+
+*Response:*
+[source,json]
+{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "127trtufzdgcw",
+  "versions": ["..."],
+  "createdAt": "2016-07-24T11:27:26.000Z",
+  "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "7mgjht1rkna8",
+      "values": [
+        {
+          "id": "1hda5st2csfom",
+          "name": "Thomas Reschenhofer",
+          "href": "https://server.sociocortex.com/api/v1/users/1hda5st2csfom"
+        }
+      ],
+      "name": "authors",
+      "href": "https://server.sociocortex.com/api/v1/attributes/7mgjht1rkna8"
+    },
+    {
+      "id": "iqqlpxfbnr8f",
+      "values": [
+        {
+          "id": "n6eidlmr0by7",
+          "name": "International Conference on Software Engineering (ICSE)",
+          "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7"
+        }
+      ],
+      "name": "acceptedIn",
+      "href": "https://server.sociocortex.com/api/v1/attributes/iqqlpxfbnr8f"
+    },
+    {
+      "id": "rvzij9nn9of4",
+      "values": [
+        "Accepted"
+      ],
+      "name": "Status",
+      "href": "https://server.sociocortex.com/api/v1/attributes/rvzij9nn9of4"
+    },
+    {
+      "id": "ys69v6zjfz54",
+      "values": [
+        "Today's enterprises have to align their information systems continuously with their dynamic business and IT environment. ..."
+      ],
+      "name": "Abstract",
+      "href": "https://server.sociocortex.com/api/v1/attributes/ys69v6zjfz54"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw",
+  "lastModifiedAt": "2016-07-24T11:27:26.000Z"
+}

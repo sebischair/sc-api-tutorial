@@ -1,0 +1,101 @@
+
+Now that we have created the workspace where the publication management system will store its contents, we can continue by creating two entity types required to store _publications_ prepared for and presented on multiple _conferences_.
+
+==== Creating _publication_ entity type (POST)
+
+To create an entity type in a workspace we simply concat the URI of the workspace by _/entityTypes_ and use the HTTP POST method to create a new entity type _publication_.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes
+BODY
+{
+    "name": "Publication"
+}
+
+*Response:*
+[source,json]
+{
+  "processes": [],
+  "attributeDefinitions": [],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 0,
+  "structurednessMetric": 1,
+  "id": "dt56spnul01p",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:26:37.202Z",
+      "type": "_new",
+      "user": {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    }
+  ],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Publication",
+  "allowFreeAttributes": false,
+  "associations": [],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+}
+
+==== Creating _conference_ entity type (POST)
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes
+BODY
+{
+    "name": "Conference"
+}
+
+*Response:*
+[source,json]
+{
+  "processes": [],
+  "attributeDefinitions": [],
+  "taskDefinitions": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "entitiesCount": 0,
+  "structurednessMetric": 1,
+  "id": "19c48jgd4b8m2",
+  "versions": [
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:29:20.655Z",
+      "type": "_new",
+      "user": {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    }
+  ],
+  "consistencyMetric": 1,
+  "derivedAttributeDefinitions": [],
+  "name": "Conference",
+  "allowFreeAttributes": false,
+  "associations": [],
+  "incomingAssociations": [],
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+}
+
+Finally, we have our workspace and the two required entity types set up.
+In the next steps we refine the attributes of the entity types before we start creating entities in the step after.

@@ -1,0 +1,32 @@
+==== Looking at attribute definitions of entity type (GET)
+
+For our entity types we have created custom attribute definitions which might also be useful to have another look at. To query these we add the _attributeDefinitions_ keyword:
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/attributeDefinitions
+
+*Response:*
+[source,json]
+[
+  {
+    "id": "2gegqgdueyqd",
+    "name": "Abstract",
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/2gegqgdueyqd"
+  },
+  {
+    "id": "1knrlnoj7kjer",
+    "name": "acceptedIn",
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/1knrlnoj7kjer"
+  },
+  {
+    "id": "18b1hu00gnxdi",
+    "name": "authors",
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/18b1hu00gnxdi"
+  },
+  {
+    "id": "mfpco2wx3zqp",
+    "name": "Status",
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/mfpco2wx3zqp"
+  }
+]

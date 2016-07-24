@@ -1,0 +1,128 @@
+Attributes of entity types can be linked to tasks, which means that for instance a task is not yet completed until a certain attribute it is linked to is set.
+Task definitions create those links between attributes and tasks to be fulfilled.
+In the following, we will first create a task definition for the previously defined _status_ attribute of the _publication_ entity type. Then, we create a new _publication_ entity whose status is not set to any value yet.
+Last, the status of new entity is updated and set to _accepted_. This will fulfill the respective task.
+
+==== Create task definition (POST)
+
+For creating the task definition, we require the id of the previously defined entity type _publication_ as well as the id of the attribute definition of _Status_ which it contains. You need to replace them with your own values in order to make the requests work.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/taskDefinitions
+BODY
+{
+  "name": "Publication Status",
+  "entityType": {
+    "id":"dt56spnul01p"
+  },
+  "attributeDefinitions": [
+    {
+      "id":"mfpco2wx3zqp"
+    }
+  ]
+}
+
+*Response:*
+[source,json]
+{
+  "attributeDefinitions": [
+    {
+      "id": "mfpco2wx3zqp",
+      "versions": [],
+      "readOnly": false,
+      "name": "Status",
+      "multiplicity": "maximalOne",
+      "attributeType": "Enumeration",
+      "entityType": {
+        "id": "dt56spnul01p",
+        "name": "Publication",
+        "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+      },
+      "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/mfpco2wx3zqp",
+      "options": {
+        "enumerationValues": [
+          "Planned",
+          "Submitted",
+          "Accepted"
+        ]
+      }
+    }
+  ],
+  "id": "875jp376lljp",
+  "satisfies": [],
+  "name": "Publication Status",
+  "tasks": [],
+  "preconditions": [],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "href": "https://server.sociocortex.com/api/v1/taskDefinitions/875jp376lljp"
+}
+
+==== Create entity _publication_ (POST)
+
+Next, we create a new publication where we purposefully do not set all the defined attributes yet.
+
+*Request:*
+[source,bash]
+POST https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities
+BODY
+{
+    "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+    "attributes":[
+        {
+            "name":"acceptedIn",
+            "values":[]
+        },
+        {
+            "name":"Abstract",
+            "values": ["Knowledge work is becoming the predominant type of work in many countries and is involved in the most important processes in organizations. ..."]
+        },
+        {
+            "name":"Status",
+            "values":[]
+        },
+        {
+            "name":"authors",
+            "values":[]
+        }
+    ]
+}
+
+*Response:*
+[source,json]
+{
+  "statusCode": 406,
+  "message": "cannot make persistent because is not consistent: Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work [uid=page/1ig6fs784zcr0, state: transient] invalid features: \"parent\", value: \"null\", error message: \"No space found.\", \"space\", value: \"null\", error message: \"Cannot be null.\"",
+  "cause": "IllegalStateException",
+  "handler": "EntitiesByEntityTypeHandler"
+}
+
+==== Updating status of publication (PUT)
+
+Task before update:
+
+*Request:*
+[source,bash]
+
+*Response:*
+[source,json]
+
+Updating status:
+
+*Request:*
+[source,bash]
+
+*Response:*
+[source,json]
+
+Task after update:
+
+*Request:*
+[source,bash]
+
+*Response:*
+[source,json]

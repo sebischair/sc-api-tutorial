@@ -1,0 +1,4 @@
+* Links to Bitbucket/Github repo
+* Offline version: Sociocortex setup
+* Online version: Authentication
+** POSTMAN test-setup (create?!)

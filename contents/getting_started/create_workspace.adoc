@@ -1,0 +1,135 @@
+Before creating our first workspace we check for the currently available workspaces because who knows, maybe someone else did the job for us already.
+
+We do this with a simple HTTP GET request on the workspaces resource. The server will respond with a list of workspaces stored.
+
+==== Looking for existing workspaces (GET)
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/workspaces
+
+*Response:*
+[source,json]
+[
+  {
+    "id": "944wcmiregxu",
+    "name": "sc-visualizer",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/944wcmiregxu"
+  },
+  {
+    "id": "107yhdgc7q9u6",
+    "name": "Northwind",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/107yhdgc7q9u6"
+  }
+]
+
+We can tell that no one has yet created a publication management workspace so we continue by creating one with a HTTP POST request.
+
+==== Creating workspace _publication management_ (POST)
+
+*Request:*
+[source,json]
+POST https://server.sociocortex.com/api/v1/workspaces
+BODY
+{
+    "name": "Publication Management"
+}
+
+*Response:*
+[source,json]
+{
+  "id": "10sasph8dvxhg",
+  "versions": ["..."],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [],
+    "readers": []
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}
+
+==== Looking at a single workspace (GET)
+
+As we have seen in the response of the server on our POST request the workspace has been created with an id (in my case the id _10sasph8dvxhg_). We can easily use this id now to get this specific workspace. In the following requests replace the id _10sasph8dvxhg_ with your own "$WORKSPACE_ID".
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+
+*Response:*
+[source,json]
+{
+  "id": "10sasph8dvxhg",
+  "versions": [
+    {
+      "action": "Edited",
+      "date": "2016-07-15T17:06:42.012Z",
+      "type": "_edit",
+      "user": {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    },
+    {
+      "action": "Added",
+      "date": "2016-07-15T17:06:41.371Z",
+      "type": "_new",
+      "user": {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    }
+  ],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [],
+    "readers": []
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}

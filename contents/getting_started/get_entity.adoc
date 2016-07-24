@@ -1,0 +1,137 @@
+Obviously, one of the most common tasks is to retrieve all the entities in a workspace or of a certain type. This can either be done by specifically searching for entities through the search endpoint (see <<Searching>>) or by querying by entity type, workspace or id of a single entity.
+
+==== Looking at all existing entities in workspace (GET)
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities
+
+*Response:*
+[source,json]
+[{
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  {
+    "id": "n6eidlmr0by7",
+    "name": "International Conference on Software Engineering (ICSE)",
+    "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7"
+  },
+  {
+    "id": "127trtufzdgcw",
+    "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+    "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw"
+}]
+
+==== Looking at all existing entities of entity type _publication_ (GET)
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities
+
+*Response:*
+[source,json]
+[{
+    "id": "127trtufzdgcw",
+    "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+    "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw"
+}]
+
+==== Looking at single entity (GET)
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/entities/127trtufzdgcw
+
+*Response:*
+[source,json]
+{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "127trtufzdgcw",
+  "versions": ["..."],
+  "createdAt": "2016-07-24T11:27:26.000Z",
+  "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "7mgjht1rkna8",
+      "values": [
+        {
+          "id": "1hda5st2csfom",
+          "name": "Thomas Reschenhofer",
+          "href": "https://server.sociocortex.com/api/v1/users/1hda5st2csfom"
+        }
+      ],
+      "name": "authors",
+      "href": "https://server.sociocortex.com/api/v1/attributes/7mgjht1rkna8"
+    },
+    {
+      "id": "iqqlpxfbnr8f",
+      "values": [
+        {
+          "id": "n6eidlmr0by7",
+          "name": "International Conference on Software Engineering (ICSE)",
+          "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7"
+        }
+      ],
+      "name": "acceptedIn",
+      "href": "https://server.sociocortex.com/api/v1/attributes/iqqlpxfbnr8f"
+    },
+    {
+      "id": "rvzij9nn9of4",
+      "values": [
+        "Accepted"
+      ],
+      "name": "Status",
+      "href": "https://server.sociocortex.com/api/v1/attributes/rvzij9nn9of4"
+    },
+    {
+      "id": "ys69v6zjfz54",
+      "values": [
+        "Today's enterprises have to align their information systems continuously with their dynamic business and IT environment. ..."
+      ],
+      "name": "Abstract",
+      "href": "https://server.sociocortex.com/api/v1/attributes/ys69v6zjfz54"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw",
+  "lastModifiedAt": "2016-07-24T11:27:26.000Z"
+}

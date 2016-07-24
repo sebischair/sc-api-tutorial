@@ -1,0 +1,88 @@
+
+==== Updating name of entity (PUT)
+
+The easiest way to demonstrate how entities are updated is by sending a HTTP PUT request on an existing _conference_ which is supposed to change the name of the conference. Let's assume we just want to get rid of the abbreviation of the conference (ICSE).
+
+*Request:*
+[source,bash]
+{
+    "name":"International Conference on Software Engineering"
+}
+
+*Response:*
+[source,json]
+{
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "tasks": [],
+  "entityType": {
+    "id": "19c48jgd4b8m2",
+    "name": "Conference",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2"
+  },
+  "incomingReferences": {
+    "acceptedIn": [
+      {
+        "id": "127trtufzdgcw",
+        "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+        "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw"
+      }
+    ]
+  },
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "n6eidlmr0by7",
+  "versions": ["..."],
+  "createdAt": "2016-07-24T11:12:00.000Z",
+  "name": "International Conference on Software Engineering",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "pme5rnjsvx5z",
+      "values": [
+        "A"
+      ],
+      "name": "Rank",
+      "href": "https://server.sociocortex.com/api/v1/attributes/pme5rnjsvx5z"
+    },
+    {
+      "id": "voa7iqjet7pf",
+      "values": [
+        2016
+      ],
+      "name": "Year",
+      "href": "https://server.sociocortex.com/api/v1/attributes/voa7iqjet7pf"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7",
+  "lastModifiedAt": "2016-07-24T18:18:06.000Z"
+}

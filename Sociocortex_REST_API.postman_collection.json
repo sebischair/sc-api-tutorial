@@ -8,24 +8,200 @@
 	},
 	"item": [
 		{
-			"name": "Auth",
+			"name": "Attribute Definition",
 			"description": "",
 			"item": [
 				{
-					"name": "GET JWT with BASIC AUTH",
+					"name": "POST a new attribute definition abstract for publication entity type",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/jwt",
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Abstract\",\n    \"multiplicity\": \"maximalOne\",\n    \"attributeType\": \"Text\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new attribute definition year for conference entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Year\",\n    \"multiplicity\": \"maximalOne\",\n    \"attributeType\": \"Number\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new attribute definition rank for conference entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Rank\",\n    \"multiplicity\": \"maximalOne\",\n    \"attributeType\": \"Enumeration\",\n    \"options\": {\n        \"enumerationValues\": [\n          \"A\",\n          \"B\",\n          \"C\"\n        ]\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new attribute definition status for publication entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Status\",\n    \"multiplicity\": \"maximalOne\",\n    \"attributeType\": \"Enumeration\",\n    \"options\": {\n        \"enumerationValues\": [\n          \"Planned\",\n          \"Submitted\",\n          \"Accepted\"\n        ]\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new attribute definition acceptedIn for publication entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"acceptedIn\",\n    \"multiplicity\": \"any\",\n    \"attributeType\": \"Link\",\n    \"options\": {\n        \"entityType\": {\n          \"id\": \"$ENTITY_TYPE_ID_CONFERENCE\"\n        },\n        \"resourceType\": \"entities\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST a new attribute definition authors for publication entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"authors\",\n    \"multiplicity\": \"any\",\n    \"attributeType\": \"Link\",\n    \"options\": {\n        \"resourceType\": \"users\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET attribute definitions of entity type",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/attributeDefinitions",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "POST credentials to get a JWT",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/jwt",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"$EMAIL@ADDRESS.com\",\n    \"password\":\"$PASSWORD\"\n}"
 						},
 						"description": ""
 					},
@@ -39,7 +215,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0Njg2MDE2MDQsInN1YiI6IjF0bmcyZzdxZ3dkM2siLCJuYW1lIjoiRGFuaWVsIEVsc25lciJ9.a29GFukKwpd4G40KpAufJdDRViOiLwkYj14A2kPVLjaOccbgQLHysiAAzxWACyom-W2rGwGuffUqU-Zo2z17vAPln954_qKAKaGQ9Mk_qCumy6Q7aAG4Awh3mhBZ2GkcHNCVOt1aWG4UntCZqpDQdyNhKZ9ZLQuW8UFXFHDE7HU",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -58,13 +234,8 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Basic $BASE64_ENCODED_CREDENTIALS",
 								"description": ""
 							}
 						],
@@ -85,12 +256,12 @@
 				{
 					"name": "POST entity of entity type Publication",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities",
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/entities",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							},
 							{
@@ -101,7 +272,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"A sample paper\"\n}"
+							"raw": "{\n    \"name\": \"Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems\",\n    \"attributes\":[\n        {\n            \"name\":\"acceptedIn\",\n            \"values\":[{\"id\":\"n6eidlmr0by7\"}]\n        },\n        {\n            \"name\":\"Abstract\",\n            \"values\": [\"Today's enterprises have to align their information systems continuously with their dynamic business and IT environment. ...\"]\n        },\n        {\n            \"name\":\"Status\",\n            \"values\":[\"Accepted\"]\n        },\n        {\n            \"name\":\"authors\",\n            \"values\":[{\n                \"id\":\"1hda5st2csfom\"\n            }]\n        }\n    ]\n}"
 						},
 						"description": ""
 					},
@@ -110,12 +281,12 @@
 				{
 					"name": "POST entity of entity type Conference",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2/entities",
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/entities",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							},
 							{
@@ -126,7 +297,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"A sample conference\"\n}"
+							"raw": "{\n    \"name\": \"International Conference on Software Engineering (ICSE)\",\n    \"attributes\":[\n        {\n            \"name\":\"Rank\",\n            \"values\":[\"A\"]\n        },\n        {\n            \"name\":\"Year\",\n            \"values\":[2016]\n        }\n    ]\n}"
 						},
 						"description": ""
 					},
@@ -135,12 +306,12 @@
 				{
 					"name": "GET all entities in workspace Publication Management",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities",
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entities",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -155,12 +326,12 @@
 				{
 					"name": "GET all entities of entity type Publication",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p/entities",
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID/entities",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -175,18 +346,43 @@
 				{
 					"name": "GET single entity",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
+						"url": "https://server.sociocortex.com/api/v1/entities/$ENTITY_ID",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT on conference entity updating name",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entities/$ENTITY_ID",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"International Conference on Software Engineering\"\n}"
 						},
 						"description": ""
 					},
@@ -199,14 +395,14 @@
 			"description": "",
 			"item": [
 				{
-					"name": "POST entityType Publication",
+					"name": "POST entity type Publication",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entityTypes",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							},
 							{
@@ -226,12 +422,12 @@
 				{
 					"name": "POST entity type Conference",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entityTypes",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							},
 							{
@@ -251,12 +447,12 @@
 				{
 					"name": "GET all entity types for workspace",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entityTypes",
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entityTypes",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -271,12 +467,32 @@
 				{
 					"name": "GET single entity type Publication",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+						"url": "https://server.sociocortex.com/api/v1/entityTypes/$ENTITY_TYPE_ID",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all entity types for workspace with meta attributes",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entityTypes?meta=*",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -302,7 +518,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -322,7 +538,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -339,7 +555,59 @@
 		{
 			"name": "Task",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "POST new task definition for attribute status of entity type publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/taskDefinitions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Publication Status\",\n  \"entityType\": {\n    \"id\":\"$PUBLICATION_ENTITY_TYPE_ID\"\n  },\n  \"attributeDefinitions\": [\n    {\n      \"id\":\"$STATUS_ATTRIBUTE_DEFINITION_ID\"\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "POST user to register new user",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"$NAME\",\n    \"email\":\"$EMAIL@ADDRESS.com\",\n    \"password\":\"$PASSWORD\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Workspace",
@@ -353,7 +621,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
@@ -373,7 +641,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							},
 							{
@@ -393,12 +661,12 @@
 				{
 					"name": "GET single workspace",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Basic ZGFuaWVsLmVsc25lckB0dW0uZGU6cWYzMHNxcWlobnkz",
+								"value": "Bearer $TOKEN",
 								"description": ""
 							}
 						],
