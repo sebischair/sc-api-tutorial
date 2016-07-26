@@ -447,8 +447,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_getting_attribute_definitions">3.8. Getting attribute definitions</a></li>
 <li><a href="#_getting_entities">3.9. Getting entities</a></li>
 <li><a href="#_tasks_and_task_definitions">3.10. Tasks and task definitions</a></li>
-<li><a href="#_updating_entity_types_entities">3.11. Updating entity types / entities</a></li>
-<li><a href="#_request_response">3.12. Request/Response</a></li>
+<li><a href="#_updating_entities_and_entity_types">3.11. Updating entities and entity types</a></li>
 </ul>
 </li>
 <li><a href="#_permisssions">4. Permisssions</a></li>
@@ -466,20 +465,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="paragraph">
 <p>A hands-on tutorial for the <a href="https://sociocortex.com">sociocortex</a> REST API.</p>
-
-<div class="postman-run-button"
-data-postman-action="collection/import"
-data-postman-var-1="c5f085c61bab315e993d"></div>
-<script type="text/javascript">
-  (function (p,o,s,t,m,a,n) {
-    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-      (n = o.createElement("script")),
-      (n.id = s+t), (n.async = 1), (n.src = m), n
-    ));
-  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-</script>
-
 </div>
 </div>
 </div>
@@ -2141,10 +2126,113 @@ BODY
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
-  "statusCode": 406,
-  "message": "cannot make persistent because is not consistent: Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work [uid=page/1ig6fs784zcr0, state: transient] invalid features: \"parent\", value: \"null\", error message: \"No space found.\", \"space\", value: \"null\", error message: \"Cannot be null.\"",
-  "cause": "IllegalStateException",
-  "handler": "EntitiesByEntityTypeHandler"
+  "isOverdue": false,
+  "progress": 0,
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "isInconsistent": false,
+  "tasks": [
+    {
+      "expertises": [],
+      "isOverdue": false,
+      "progress": 0,
+      "id": "1jxlh7fiinyp3",
+      "taskDefinition": {
+        "id": "875jp376lljp",
+        "name": "Publication Status",
+        "href": "https://server.sociocortex.com/api/v1/taskDefinitions/875jp376lljp"
+      },
+      "skipped": false,
+      "isProgressCalculated": true,
+      "entity": {
+        "id": "pvv5b7tg2ave",
+        "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+        "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave"
+      },
+      "name": "Publication Status",
+      "attributes": [
+        {
+          "id": "1nnq4l3r7xiez",
+          "name": "Status",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+        }
+      ],
+      "isInconsistent": false,
+      "href": "https://server.sociocortex.com/api/v1/tasks/1jxlh7fiinyp3"
+    }
+  ],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "pvv5b7tg2ave",
+  "versions": ["..."],
+  "createdAt": "2016-07-25T12:12:42.000Z",
+  "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "1fxaj2nfs3yp9",
+      "values": [],
+      "name": "authors",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+    },
+    {
+      "id": "1nnq4l3r7xiez",
+      "values": [],
+      "name": "Status",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+    },
+    {
+      "id": "1r36ijukwwbtf",
+      "values": [],
+      "name": "acceptedIn",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1r36ijukwwbtf"
+    },
+    {
+      "id": "1rc9u2if7o62m",
+      "values": [
+        "Knowledge work is becoming the predominant type of work in many countries and is involved in the most important processes in organizations. ..."
+      ],
+      "name": "Abstract",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1rc9u2if7o62m"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave",
+  "lastModifiedAt": "2016-07-25T12:12:42.000Z"
 }</code></pre>
 </div>
 </div>
@@ -2152,45 +2240,281 @@ BODY
 <div class="sect3">
 <h4 id="_updating_status_of_publication_put"><a class="anchor" href="#_updating_status_of_publication_put"></a>3.10.3. Updating status of publication (PUT)</h4>
 <div class="paragraph">
-<p>Task before update:</p>
+<p>If we look at the entity we just created, we can see a task list being attached to it with one open task concerning the taskDefinition we created before. Its progress is 0 and thus the task is not yet fulfilled.</p>
 </div>
 <div class="paragraph">
 <p><strong>Request:</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">*Response:*
-[source,json]</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Updating status:</p>
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "isOverdue": false,
+  "progress": 0,
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "isInconsistent": false,
+  "tasks": [
+    {
+      "expertises": [],
+      "isOverdue": false,
+      "progress": 0,
+      "id": "1jxlh7fiinyp3",
+      "taskDefinition": {
+        "id": "875jp376lljp",
+        "name": "Publication Status",
+        "href": "https://server.sociocortex.com/api/v1/taskDefinitions/875jp376lljp"
+      },
+      "skipped": false,
+      "isProgressCalculated": true,
+      "entity": {
+        "id": "pvv5b7tg2ave",
+        "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+        "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave"
+      },
+      "name": "Publication Status",
+      "attributes": [
+        {
+          "id": "1nnq4l3r7xiez",
+          "name": "Status",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+        }
+      ],
+      "isInconsistent": false,
+      "href": "https://server.sociocortex.com/api/v1/tasks/1jxlh7fiinyp3"
+    }
+  ],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "pvv5b7tg2ave",
+  "versions": ["..."],
+  "createdAt": "2016-07-25T12:12:42.000Z",
+  "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "1fxaj2nfs3yp9",
+      "values": [],
+      "name": "authors",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+    },
+    {
+      "id": "1nnq4l3r7xiez",
+      "values": [],
+      "name": "Status",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+    },
+    {
+      "id": "1r36ijukwwbtf",
+      "values": [],
+      "name": "acceptedIn",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1r36ijukwwbtf"
+    },
+    {
+      "id": "1rc9u2if7o62m",
+      "values": [
+        "Knowledge work is becoming the predominant type of work in many countries and is involved in the most important processes in organizations. ..."
+      ],
+      "name": "Abstract",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1rc9u2if7o62m"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave",
+  "lastModifiedAt": "2016-07-25T12:12:42.000Z"
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to fulfill the task we update the concurrent entity by using the HTTP PUT method to change the <em>status</em> to <em>Accepted</em>. The response contains the updated entity with a progress of the task of 100 which means it is fulfilled.</p>
 </div>
 <div class="paragraph">
 <p><strong>Request:</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">*Response:*
-[source,json]</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">PUT https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave
+BODY
+{
+    "attributes":[
+        {
+            "id": "1nnq4l3r7xiez",
+            "name":"Status",
+            "values": ["Accepted"]
+        }
+    ]
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Task after update:</p>
-</div>
-<div class="paragraph">
-<p><strong>Request:</strong></p>
+<p><strong>Response:</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">*Response:*
-[source,json]</code></pre>
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "isOverdue": false,
+  "progress": 100,
+  "files": [],
+  "workspace": {
+    "id": "10sasph8dvxhg",
+    "name": "Publication Management",
+    "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+  },
+  "children": [],
+  "isInconsistent": false,
+  "tasks": [
+    {
+      "progress": 100,
+      "isOverdue": false,
+      "taskDefinition": {
+        "id": "875jp376lljp",
+        "name": "Publication Status",
+        "href": "https://server.sociocortex.com/api/v1/taskDefinitions/875jp376lljp"
+      },
+      "entity": {
+        "id": "pvv5b7tg2ave",
+        "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+        "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave"
+      },
+      "isProgressCalculated": true,
+      "isInconsistent": false,
+      "expertises": [],
+      "id": "1jxlh7fiinyp3",
+      "skipped": false,
+      "name": "Publication Status",
+      "finishedAt": "2016-07-26T07:22:35.000Z",
+      "finishedBy": {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      },
+      "attributes": [
+        {
+          "id": "1nnq4l3r7xiez",
+          "name": "Status",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+        }
+      ],
+      "href": "https://server.sociocortex.com/api/v1/tasks/1jxlh7fiinyp3"
+    }
+  ],
+  "entityType": {
+    "id": "dt56spnul01p",
+    "name": "Publication",
+    "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+  },
+  "incomingReferences": {},
+  "creator": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "id": "pvv5b7tg2ave",
+  "versions": ["..."],
+  "createdAt": "2016-07-25T12:12:42.000Z",
+  "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+  "lastModifier": {
+    "id": "$USER_ID",
+    "name": "$NAME",
+    "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+  },
+  "permissions": {
+    "writers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "readers": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ]
+  },
+  "attributes": [
+    {
+      "id": "1fxaj2nfs3yp9",
+      "values": [],
+      "name": "authors",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+    },
+    {
+      "id": "1nnq4l3r7xiez",
+      "values": [
+        "Accepted"
+      ],
+      "name": "Status",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+    },
+    {
+      "id": "1r36ijukwwbtf",
+      "values": [],
+      "name": "acceptedIn",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1r36ijukwwbtf"
+    },
+    {
+      "id": "1rc9u2if7o62m",
+      "values": [
+        "Knowledge work is becoming the predominant type of work in many countries and is involved in the most important processes in organizations. ..."
+      ],
+      "name": "Abstract",
+      "href": "https://server.sociocortex.com/api/v1/attributes/1rc9u2if7o62m"
+    }
+  ],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave",
+  "lastModifiedAt": "2016-07-25T12:12:42.000Z"
+}</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_updating_entity_types_entities"><a class="anchor" href="#_updating_entity_types_entities"></a>3.11. Updating entity types / entities</h3>
+<h3 id="_updating_entities_and_entity_types"><a class="anchor" href="#_updating_entities_and_entity_types"></a>3.11. Updating entities and entity types</h3>
 <div class="sect3">
 <h4 id="_updating_name_of_entity_put"><a class="anchor" href="#_updating_name_of_entity_put"></a>3.11.1. Updating name of entity (PUT)</h4>
 <div class="paragraph">
@@ -2289,11 +2613,22 @@ BODY
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_request_response"><a class="anchor" href="#_request_response"></a>3.12. Request/Response</h3>
+<div class="sect3">
+<h4 id="_updating_name_of_attribute_of_entity_type_put"><a class="anchor" href="#_updating_name_of_attribute_of_entity_type_put"></a>3.11.2. Updating name of attribute of entity type (PUT)</h4>
 <div class="paragraph">
-<p>TBD &#8230;&#8203;</p>
+<p>As attributes might change over time, it might be necessary to change an attribute definition at some point. This can be done by sending a HTTP PUT request to a certain attribute identified by its id. The latter can be found out by querying the respective entity type first (see <a href="#_looking_at_the_em_publication_em_entity_type_get">Looking at the <em>publication</em> entity type (GET)</a>).</p>
+</div>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
 </div>
 </div>
 </div>
@@ -2478,7 +2813,7 @@ BODY
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-24 20:22:13 CEST
+Last updated 2016-07-26 09:37:55 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">

@@ -38,10 +38,6 @@ include::getting_started/get_entity.adoc[]
 
 include::getting_started/tasks.adoc[]
 
-=== Updating entity types / entities
+=== Updating entities and entity types
 
 include::getting_started/update_entity_type.adoc[]
-
-=== Request/Response
-
-include::getting_started/req_resp.adoc[]

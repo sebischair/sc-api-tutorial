@@ -387,6 +387,56 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "PUT entity of entity type Publication to fulfill task",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/entities/$ENTITY_ID",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"attributes\":[\n        {\n            \"id\": \"1nnq4l3r7xiez\",\n            \"name\":\"Status\",\n            \"values\": [\"Accepted\"]\n        }\n    ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT to attribute of entity of entity type Publication",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/attributes/$ATTRIBUTE_ID",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"values\":[{\n        \"id\":\"1d94htksgwy2i\",\n        \"name\": \"Matheus Hauder\"\n    }]\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},

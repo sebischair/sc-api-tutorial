@@ -86,3 +86,50 @@ The easiest way to demonstrate how entities are updated is by sending a HTTP PUT
   "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7",
   "lastModifiedAt": "2016-07-24T18:18:06.000Z"
 }
+
+==== Updating single attribute of entity type (PUT)
+
+As attributes might change over time, it might be necessary to change an attribute of an entity at some point. This can be done by sending a HTTP PUT request to a certain attribute identified by its id. The latter can be found out by querying the respective entity first (see <<Looking at single entity (GET)>>). Let's assume we want to change the authors of the _publication_ created in <<Create entity _publication_ (POST)>> where in our case the id of the authors attribute is 1fxaj2nfs3yp9.
+
+*Request:*
+[source,bash]
+PUT https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9
+BODY
+{
+    "values":[{
+        "id":"1d94htksgwy2i",
+        "name": "Matheus Hauder"
+    }]
+}
+
+*Response:*
+[source,json]
+{
+  "id": "1fxaj2nfs3yp9",
+  "values": [
+    {
+      "id": "1d94htksgwy2i",
+      "name": "Matheus Hauder",
+      "href": "https://server.sociocortex.com/api/v1/users/1d94htksgwy2i"
+    }
+  ],
+  "attributeDefinition": {
+    "id": "18b1hu00gnxdi",
+    "versions": [],
+    "readOnly": false,
+    "name": "authors",
+    "multiplicity": "any",
+    "attributeType": "Link",
+    "entityType": {
+      "id": "dt56spnul01p",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+    },
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/18b1hu00gnxdi",
+    "options": {
+      "resourceType": "users"
+    }
+  },
+  "name": "authors",
+  "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+}
