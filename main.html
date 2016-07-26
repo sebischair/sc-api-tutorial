@@ -2614,20 +2614,60 @@ BODY
 </div>
 </div>
 <div class="sect3">
-<h4 id="_updating_name_of_attribute_of_entity_type_put"><a class="anchor" href="#_updating_name_of_attribute_of_entity_type_put"></a>3.11.2. Updating name of attribute of entity type (PUT)</h4>
+<h4 id="_updating_single_attribute_of_entity_type_put"><a class="anchor" href="#_updating_single_attribute_of_entity_type_put"></a>3.11.2. Updating single attribute of entity type (PUT)</h4>
 <div class="paragraph">
-<p>As attributes might change over time, it might be necessary to change an attribute definition at some point. This can be done by sending a HTTP PUT request to a certain attribute identified by its id. The latter can be found out by querying the respective entity type first (see <a href="#_looking_at_the_em_publication_em_entity_type_get">Looking at the <em>publication</em> entity type (GET)</a>).</p>
+<p>As attributes might change over time, it might be necessary to change an attribute of an entity at some point. This can be done by sending a HTTP PUT request to a certain attribute identified by its id. The latter can be found out by querying the respective entity first (see <a href="#_looking_at_single_entity_get">Looking at single entity (GET)</a>). Let&#8217;s assume we want to change the authors of the <em>publication</em> created in <a href="#_create_entity_em_publication_em_post">Create entity <em>publication</em> (POST)</a> where in our case the id of the authors attribute is 1fxaj2nfs3yp9.</p>
 </div>
 <div class="paragraph">
 <p><strong>Request:</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">PUT https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9
+BODY
+{
+    "values":[{
+        "id":"1d94htksgwy2i",
+        "name": "Matheus Hauder"
+    }]
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "id": "1fxaj2nfs3yp9",
+  "values": [
+    {
+      "id": "1d94htksgwy2i",
+      "name": "Matheus Hauder",
+      "href": "https://server.sociocortex.com/api/v1/users/1d94htksgwy2i"
+    }
+  ],
+  "attributeDefinition": {
+    "id": "18b1hu00gnxdi",
+    "versions": [],
+    "readOnly": false,
+    "name": "authors",
+    "multiplicity": "any",
+    "attributeType": "Link",
+    "entityType": {
+      "id": "dt56spnul01p",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p"
+    },
+    "href": "https://server.sociocortex.com/api/v1/attributeDefinitions/18b1hu00gnxdi",
+    "options": {
+      "resourceType": "users"
+    }
+  },
+  "name": "authors",
+  "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2813,7 +2853,7 @@ BODY
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-26 09:37:55 CEST
+Last updated 2016-07-26 09:58:17 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
