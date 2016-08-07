@@ -1,4 +1,4 @@
-In order to get started with _sociocortex_, we first need to create an account to be able to create an own workspace as well as other entities.
+In order to get started with _SocioCortex_, we first need to create an account to be able to create an own workspace as well as other entities.
 
 ==== Registering a new user (POST)
 
@@ -30,15 +30,15 @@ BODY
   "groups": []
 }
 
-After having successfully send this information to the server, we check the respective provided email account for an email containing an activation link for _sociocortex_.
+After having successfully send this information to the server, we check the respective provided email account for an email containing an activation link for _SocioCortex_.
 
-image::assets/activation_email.png[Email]
+image::assets/activation_email.png[caption="Figure 4: ", title="Activation email", alt="Activation email"]
 
 Once we click the link in the email, the account is activated and we are ready to go.
 
-==== Log in to _sociocortex_
+==== Log in to _SocioCortex_
 
-There are two ways to log in to _sociocortex_, either by HTTP Basic authentication or by using JSON Web Tokens (JWT, https://jwt.io/). Throughout this tutorial we will be using the predefined HTTP requests from the Postman-Collection. Therefore, we encourage you to simply replace the placeholder "$TOKEN" in all the Postman requests with your own JWT (see <<JWT>>).
+There are two ways to log in to _SocioCortex_, either by HTTP Basic authentication or by using JSON Web Tokens (JWT, https://jwt.io/). Throughout this tutorial we will be using the predefined HTTP requests from the Postman-Collection. Therefore, we encourage you to simply replace the placeholder "$TOKEN" in all the Postman requests with your own JWT (see <<JWT>>).
 
 ===== Basic Auth
 

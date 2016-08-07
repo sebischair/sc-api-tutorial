@@ -1,9 +1,37 @@
 === Motivation
 
-What is sociocortex and explanation how the REST API is used to communicate with the platform in client applications.
+Social information management involves multiple users collaborating in the design and creation of information. More than 10 years of research and cooperations with industry partners in this area revealed recurring problems and solution patterns. Therefore, social information management systems share a common set of general capabilities and features.
+
+SocioCortex integrates those features and exposes them as services to its applications. In this way, domain-specific applications built upon the SocioCortex platform benefit from proven solution patterns for prevalent social information management problems.
+
+App developers can build custom apps faster using the rich REST-API of the SocioCortex platform.
+
+In order to spur the use of the REST-API and to remove barriers, this tutorial provides a hands-on example covering most of the typical use cases relevant for developers.
 
 === Concepts
-* Architecture (Layers)
-* Class Hierarchy (Entities, Workspaces, Tasks, etc.)
-* Basic types in sociocortex (Numbers, String, Enum, Date, etc.)
-* Usage (server.sociocortex (CM?), REST API, sc-angular, modeler, visualizer) (?)
+
+==== Architecture
+The image below illustrates the layers the _SocioCortex REST-API_ is built of:
+
+image::assets/layers.png[caption="Figure 1: ", title="Architecture layers", alt="Architecture layers"]
+
+==== Class Hierarchy
+To get a deeper understanding of the class hierarchy, the following class diagram seeks to abstract the classes and their hierarchical relationships:
+
+image::assets/model.png[caption="Figure 2: ", title="Class diagram", alt="Class diagram"]
+
+==== Basic Types in SocioCortex
+
+Shortly, we introduce the basic types that can be used within the SocioCortex ecosystem:
+
+* Number
+* String
+* Enumeration
+* Date
+
+Furthermore, developers can define their own data types by creating respective entity type definitions as well as refine them with custom attribute definitions.
+
+==== Helpful Resources
+
+* SocioCortex Server, https://server.sociocortex.com
+* SC-Angular, A library for developing apps with AngularJS and the _SocioCortex REST-API_, https://github.com/sebischair/sc-angular

@@ -1,0 +1,2 @@
+* Writers - additiv
+* Readers - substraktiv

@@ -1,5 +1,5 @@
 As we have created two entity types with respective instances, it might be interesting to query these types and their attribute definitions.
-The _sociocortex REST API_ offers the possibility to further refine queries by query parameters, e.g. by specifying desired attributes or meta attributes. A more detailed description can be found in <<Query Parameters>>.
+The _SocioCortex REST-API_ offers the possibility to further refine queries by query parameters, e.g. by specifying desired attributes or meta attributes. A more detailed description can be found in <<Query Parameters>>.
 
 ==== Looking at all created entity types (GET)
 

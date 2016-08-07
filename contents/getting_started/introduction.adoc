@@ -1,4 +1,4 @@
-The demo scenario that will serve as a real world example to demonstrate the usage of the _sociocortex REST API_ is a simple publication management system.
+The demo scenario that will serve as a real world example to demonstrate the usage of the _SocioCortex REST-API_ is a simple publication management system.
 
 Before we can start with the actual scenario, we check that the authentication is working for your credentials and shortly outline the differences of jwt and basic auth.
 
@@ -7,12 +7,12 @@ The latter we use to add entities, i.e. publications or conferences, to the work
 
 Furthermore, tasks and their definitions are introduced and combined with the attribute definitions of entity types.
 
-While going through the demo scenario all HTTP verbs will be taken into account in order to make you feel comfortable with all kinds of actions necessary to interact with the _sociocortex REST API_.
+While going through the demo scenario all HTTP verbs will be taken into account in order to make you feel comfortable with all kinds of actions necessary to interact with the _SocioCortex REST-API_.
 
 ==== Structure of resource URIs
 
 Example URI for accessing all resources of type entityType within a workspace with a specific ID:
 
-image::assets/uri_schema.png[URI]
+image::assets/uri_schema.png[caption="Figure 3: ", title="URI Schema", alt="URI Schema"]
 
 Additionally, one can provide query parameters to further refine for instance the requested meta attributes. More on query parameters can be found in <<Query Parameters>>.

@@ -1,12 +1,13 @@
-= Sociocortex Tutorial
+= SocioCortex Tutorial
 Daniel Elsner <daniel.elsner@tum.de>
 :toc: left
 :source-highlighter: highlightjs
 :sectanchors: true
 :sectlinks: true
 :sectnums: true
+:figure-caption!:
 
-A hands-on tutorial for the https://sociocortex.com[sociocortex] REST API.
+A hands-on tutorial for the https://sociocortex.com[SocioCortex] REST-API.
 
 == Introduction
 
@@ -16,7 +17,7 @@ include::contents/introduction.adoc[]
 
 include::contents/configuration.adoc[]
 
-== Getting started with the REST API
+== Getting started with the REST-API
 
 include::contents/getting_started.adoc[]
 
