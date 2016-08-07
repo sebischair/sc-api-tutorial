@@ -21,7 +21,7 @@ include::contents/configuration.adoc[]
 
 include::contents/getting_started.adoc[]
 
-== Permisssions
+== Permissions
 
 include::contents/permissions.adoc[]
 

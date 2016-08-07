@@ -434,7 +434,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_concepts">1.2. Concepts</a></li>
 </ul>
 </li>
-<li><a href="#_configuration">2. Configuration</a></li>
+<li><a href="#_configuration">2. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_running_your_own_sociocortex_server_instance">2.1. Running your own SocioCortex server instance</a></li>
+<li><a href="#_working_with_sebis_sociocortex_server">2.2. Working with sebis SocioCortex server</a></li>
+<li><a href="#_postman_setup">2.3. Postman setup</a></li>
+</ul>
+</li>
 <li><a href="#_getting_started_with_the_rest_api">3. Getting started with the REST-API</a>
 <ul class="sectlevel2">
 <li><a href="#_introduction_to_demo_scenario">3.1. Introduction to demo scenario</a></li>
@@ -556,25 +562,51 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_configuration"><a class="anchor" href="#_configuration"></a>2. Configuration</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Links to Bitbucket/Github repo</p>
-</li>
-<li>
-<p>Offline version: Sociocortex setup</p>
-</li>
-<li>
-<p>Online version: Authentication</p>
-<div class="ulist">
-<ul>
-<li>
-<p>POSTMAN test-setup (create?!)</p>
-</li>
-</ul>
+<div class="sect2">
+<h3 id="_running_your_own_sociocortex_server_instance"><a class="anchor" href="#_running_your_own_sociocortex_server_instance"></a>2.1. Running your own SocioCortex server instance</h3>
+<div class="paragraph">
+<p>If you want to run your own SocioCortex server, start with the setup of the server by cloning the repository from <a href="https://bitbucket.org/sebischair/sociocortex" class="bare">https://bitbucket.org/sebischair/sociocortex</a> and follow the instruction given in the Readme-section of the repository.</p>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the POSTMAN collection throughout this tutorial and replace <em>server.sociocortex.com</em> with your respective server url (e.g. if running the server locally <em>localhost:8083</em>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_working_with_sebis_sociocortex_server"><a class="anchor" href="#_working_with_sebis_sociocortex_server"></a>2.2. Working with sebis SocioCortex server</h3>
+<div class="paragraph">
+<p>If you want to work with the server instance provided by the sebis chair, you can do so by simply registering on <a href="https://server.sociocortex.com" class="bare">https://server.sociocortex.com</a> (see image below).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/server.png" alt="SocioCortex server">
+</div>
+<div class="title">Figure 4: SocioCortex server</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can register over the REST-API itself as outlined in <a href="#_authentication">Authentication</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_postman_setup"><a class="anchor" href="#_postman_setup"></a>2.3. Postman setup</h3>
+<div class="paragraph">
+<p>Postman is an application which is used to test and develop APIs. Its straightforward UI enables developers to send custom HTTP requests very comfortably.
+It can either be downloaded here: <a href="https://www.getpostman.com/" class="bare">https://www.getpostman.com/</a></p>
+</div>
+<div class="paragraph">
+<p>Or by simply clicking the button below:</p>
+</div>
+<div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="c5f085c61bab315e993d"></div>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
 </div>
 </div>
 </div>
