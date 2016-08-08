@@ -727,6 +727,31 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "PUT reader to permissions block",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"permissions\": {\n        \"readers\": [{\n            \"id\": \"$USER_ID\"\n        }]\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}

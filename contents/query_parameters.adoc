@@ -1,5 +1,55 @@
-* query parameters - list vs. single (Attribute alle dabei)
-* attributes (leer lassen nicht erklären) (* oder , getrennt)
-* meta
-* content
-* task
+When looking at the responses from the server you might have noticed that some returned entities or workspaces contain more attributes/information than others.
+The reason for that is that by default when returning a list, the _SocioCortex REST-API_ includes only certain attributes in the returned objects. Thus, when getting all workspaces in <<Creating a workspace>> the list of results only contained the attributes _id_,_name_ and _href_. However, the response for a single workspace contained attributes such as _permissions_, _versions_ or _rootEntity_.
+The same applies to entities which we queried in <<Getting entities>>. Here, by querying single entities the self-defined attributes were included which we did not see when getting a list of entities.
+Now, when querying a list one might also be interested in certain attributes which are not by default included in the responded list, e.g. attributes you defined yourself.
+The _SocioCortex REST-API_ enables developers to do so by adding query parameters which are introduced in the following subsections.
+
+=== Meta
+
+As mentioned above when getting all workspaces the responses are missing so-called _meta attributes_ as _permissions_. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the _meta_ query parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a _*_ to include all attributes.
+
+*Examples:*
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces?meta=permissions
+
+Returns all workspaces and includes the _permissions_ meta attribute.
+
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces?meta=*
+
+Returns all workspaces and includes all meta attributes.
+
+=== Attributes
+
+In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the query parameter _attributes_ is appended to the URI (see URI schema in <<Introduction to demo scenario>>). As for meta attributes, you either include a _*_ for all attributes or a comma-separated list of attributes.
+
+*Examples:*
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?attributes=Year,Rank
+
+Returns all entities of a workspace and includes the self-defined attributes _Year_ and _Rank_.
+
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?attributes=*
+
+Returns all entities of a workspace and includes all attributes of entity types.
+
+=== Content
+
+When querying entities one might be willing to include or exclude the content of certain entities such as text pages. Therefore, the content parameter enables us to simply set a flag whether the rich-text content of the entity should be included in the response.
+
+*Example:*
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?content=true
+
+Returns all entities of a workspace and includes their rich-text content.
+
+=== Tasks
+
+Tasks are linked to attributes as we have seen in <<Tasks and task definitions>>. When retrieving entities from a server developers can add a boolean parameter _tasks_ to the URI indicating if the tasks of the entity should be included in the response.
+
+*Example:*
+[source,bash]
+https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?tasks=true
+
+Returns all entities of a workspace and includes their respective linked tasks.

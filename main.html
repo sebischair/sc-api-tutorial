@@ -462,7 +462,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_add_editor_to_workspace">4.2. Add Editor to Workspace</a></li>
 </ul>
 </li>
-<li><a href="#_query_parameters">5. Query Parameters</a></li>
+<li><a href="#_query_parameters">5. Query Parameters</a>
+<ul class="sectlevel2">
+<li><a href="#_meta">5.1. Meta</a></li>
+<li><a href="#_attributes">5.2. Attributes</a></li>
+<li><a href="#_content">5.3. Content</a></li>
+<li><a href="#_tasks">5.4. Tasks</a></li>
+</ul>
+</li>
 <li><a href="#_searching">6. Searching</a>
 <ul class="sectlevel2">
 <li><a href="#_searching_for_entities">6.1. Searching for entities</a></li>
@@ -2936,24 +2943,96 @@ BODY
 <div class="sect1">
 <h2 id="_query_parameters"><a class="anchor" href="#_query_parameters"></a>5. Query Parameters</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>query parameters - list vs. single (Attribute alle dabei)</p>
-</li>
-<li>
-<p>attributes (leer lassen nicht erklären) (* oder , getrennt)</p>
-</li>
-<li>
-<p>meta</p>
-</li>
-<li>
-<p>content</p>
-</li>
-<li>
-<p>task</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>When looking at the responses from the server you might have noticed that some returned entities or workspaces contain more attributes/information than others.
+The reason for that is that by default when returning a list, the <em>SocioCortex REST-API</em> includes only certain attributes in the returned objects. Thus, when getting all workspaces in <a href="#_creating_a_workspace">Creating a workspace</a> the list of results only contained the attributes <em>id</em>,<em>name</em> and <em>href</em>. However, the response for a single workspace contained attributes such as <em>permissions</em>, <em>versions</em> or <em>rootEntity</em>.
+The same applies to entities which we queried in <a href="#_getting_entities">Getting entities</a>. Here, by querying single entities the self-defined attributes were included which we did not see when getting a list of entities.
+Now, when querying a list one might also be interested in certain attributes which are not by default included in the responded list, e.g. attributes you defined yourself.
+The <em>SocioCortex REST-API</em> enables developers to do so by adding query parameters which are introduced in the following subsections.</p>
+</div>
+<div class="sect2">
+<h3 id="_meta"><a class="anchor" href="#_meta"></a>5.1. Meta</h3>
+<div class="paragraph">
+<p>As mentioned above when getting all workspaces the responses are missing so-called <em>meta attributes</em> as <em>permissions</em>. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the <em>meta</em> query parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a <em>*</em> to include all attributes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces?meta=permissions</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all workspaces and includes the <em>permissions</em> meta attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces?meta=*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all workspaces and includes all meta attributes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_attributes"><a class="anchor" href="#_attributes"></a>5.2. Attributes</h3>
+<div class="paragraph">
+<p>In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the query parameter <em>attributes</em> is appended to the URI (see URI schema in <a href="#_introduction_to_demo_scenario">Introduction to demo scenario</a>). As for meta attributes, you either include a <em>*</em> for all attributes or a comma-separated list of attributes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?attributes=Year,Rank</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all entities of a workspace and includes the self-defined attributes <em>Year</em> and <em>Rank</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?attributes=*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all entities of a workspace and includes all attributes of entity types.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_content"><a class="anchor" href="#_content"></a>5.3. Content</h3>
+<div class="paragraph">
+<p>When querying entities one might be willing to include or exclude the content of certain entities such as text pages. Therefore, the content parameter enables us to simply set a flag whether the rich-text content of the entity should be included in the response.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?content=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all entities of a workspace and includes their rich-text content.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tasks"><a class="anchor" href="#_tasks"></a>5.4. Tasks</h3>
+<div class="paragraph">
+<p>Tasks are linked to attributes as we have seen in <a href="#_tasks_and_task_definitions">Tasks and task definitions</a>. When retrieving entities from a server developers can add a boolean parameter <em>tasks</em> to the URI indicating if the tasks of the entity should be included in the response.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg/entities?tasks=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Returns all entities of a workspace and includes their respective linked tasks.</p>
+</div>
 </div>
 </div>
 </div>
