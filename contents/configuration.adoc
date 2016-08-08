@@ -2,7 +2,7 @@
 
 If you want to run your own SocioCortex server, start with the setup of the server by cloning the repository from https://bitbucket.org/sebischair/sociocortex and follow the instruction given in the Readme-section of the repository.
 
-As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the POSTMAN collection throughout this tutorial and replace _server.sociocortex.com_ with your respective server url (e.g. if running the server locally _localhost:8083_).
+As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the Postman collection throughout this tutorial and replace _server.sociocortex.com_ with your respective server url (e.g. if running the server locally _localhost:8083_).
 
 === Working with sebis SocioCortex server
 

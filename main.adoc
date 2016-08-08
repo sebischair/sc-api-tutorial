@@ -60,7 +60,7 @@ include::contents/getting_started.adoc[]
 
 include::contents/permissions.adoc[]
 
-== Query Parameters
+== Optional request parameters
 
 include::contents/query_parameters.adoc[]
 

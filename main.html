@@ -462,7 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_add_editor_to_workspace">4.2. Add editor to workspace</a></li>
 </ul>
 </li>
-<li><a href="#_query_parameters">5. Query Parameters</a>
+<li><a href="#_optional_request_parameters">5. Optional request parameters</a>
 <ul class="sectlevel2">
 <li><a href="#_meta">5.1. Meta</a></li>
 <li><a href="#_attributes">5.2. Attributes</a></li>
@@ -494,6 +494,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <script type="text/javascript">
 window.onscroll = function() {adjustTOC()};
 window.onclick = function() {adjustTOC()};
+
 $(function() {
     adjustTOC();
 });
@@ -511,8 +512,6 @@ function adjustTOC () {
       $('#toc a').each(function(index) {
          if($(this).attr("href") == $('#content a.anchor').get(highestIndex).getAttribute("href")) {
            $(this).addClass("active");
-           console.log("adding class");
-           console.log($(this));
          } else {
            $(this).removeClass("active");
          }
@@ -615,7 +614,7 @@ function adjustTOC () {
 <p>If you want to run your own SocioCortex server, start with the setup of the server by cloning the repository from <a href="https://bitbucket.org/sebischair/sociocortex" class="bare">https://bitbucket.org/sebischair/sociocortex</a> and follow the instruction given in the Readme-section of the repository.</p>
 </div>
 <div class="paragraph">
-<p>As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the POSTMAN collection throughout this tutorial and replace <em>server.sociocortex.com</em> with your respective server url (e.g. if running the server locally <em>localhost:8083</em>).</p>
+<p>As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the Postman collection throughout this tutorial and replace <em>server.sociocortex.com</em> with your respective server url (e.g. if running the server locally <em>localhost:8083</em>).</p>
 </div>
 </div>
 <div class="sect2">
@@ -690,7 +689,7 @@ The latter we use to add entities, i.e. publications or conferences, to the work
 <div class="title">Figure 4: URI Schema</div>
 </div>
 <div class="paragraph">
-<p>Additionally, one can provide query parameters to further refine for instance the requested meta attributes. More on query parameters can be found in <a href="#_query_parameters">Query Parameters</a>.</p>
+<p>Additionally, one can provide query parameters to further refine for instance the requested meta attributes. More on query parameters can be found in <a href="#Query Parameters">[Query Parameters]</a>.</p>
 </div>
 </div>
 </div>
@@ -1532,7 +1531,7 @@ BODY
 <h3 id="_getting_entity_types"><a class="anchor" href="#_getting_entity_types"></a>3.7. Getting entity types</h3>
 <div class="paragraph">
 <p>As we have created two entity types with respective instances, it might be interesting to query these types and their attribute definitions.
-The <em>SocioCortex REST-API</em> offers the possibility to further refine queries by query parameters, e.g. by specifying desired attributes or meta attributes. A more detailed description can be found in <a href="#_query_parameters">Query Parameters</a>.</p>
+The <em>SocioCortex REST-API</em> offers the possibility to further refine queries by query parameters, e.g. by specifying desired attributes or meta attributes. A more detailed description can be found in <a href="#Query Parameters">[Query Parameters]</a>.</p>
 </div>
 <div class="sect3">
 <h4 id="_looking_at_all_created_entity_types_get"><a class="anchor" href="#_looking_at_all_created_entity_types_get"></a>3.7.1. Looking at all created entity types (GET)</h4>
@@ -2664,7 +2663,8 @@ BODY
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">{
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">PUT https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7
+{
     "name":"International Conference on Software Engineering"
 }</code></pre>
 </div>
@@ -2753,7 +2753,7 @@ BODY
 </div>
 </div>
 <div class="sect3">
-<h4 id="_updating_single_attribute_of_entity_type_put"><a class="anchor" href="#_updating_single_attribute_of_entity_type_put"></a>3.11.2. Updating single attribute of entity type (PUT)</h4>
+<h4 id="_updating_single_attribute_of_entity_put"><a class="anchor" href="#_updating_single_attribute_of_entity_put"></a>3.11.2. Updating single attribute of entity (PUT)</h4>
 <div class="paragraph">
 <p>As attributes might change over time, it might be necessary to change an attribute of an entity at some point. This can be done by sending a HTTP PUT request to a certain attribute identified by its id. The latter can be found out by querying the respective entity first (see <a href="#_looking_at_single_entity_get">Looking at single entity (GET)</a>). Let&#8217;s assume we want to change the authors of the <em>publication</em> created in <a href="#_create_entity_em_publication_em_post">Create entity <em>publication</em> (POST)</a> where in our case the id of the authors attribute is 1fxaj2nfs3yp9.</p>
 </div>
@@ -2976,19 +2976,19 @@ BODY
 </div>
 </div>
 <div class="sect1">
-<h2 id="_query_parameters"><a class="anchor" href="#_query_parameters"></a>5. Query Parameters</h2>
+<h2 id="_optional_request_parameters"><a class="anchor" href="#_optional_request_parameters"></a>5. Optional request parameters</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When looking at the responses from the server you might have noticed that some returned entities or workspaces contain more attributes/information than others.
 The reason for that is that by default when returning a list, the <em>SocioCortex REST-API</em> includes only certain attributes in the returned objects. Thus, when getting all workspaces in <a href="#_creating_a_workspace">Creating a workspace</a> the list of results only contained the attributes <em>id</em>,<em>name</em> and <em>href</em>. However, the response for a single workspace contained attributes such as <em>permissions</em>, <em>versions</em> or <em>rootEntity</em>.
 The same applies to entities which we queried in <a href="#_getting_entities">Getting entities</a>. Here, by querying single entities the self-defined attributes were included which we did not see when getting a list of entities.
 Now, when querying a list one might also be interested in certain attributes which are not by default included in the responded list, e.g. attributes you defined yourself.
-The <em>SocioCortex REST-API</em> enables developers to do so by adding query parameters which are introduced in the following subsections.</p>
+The <em>SocioCortex REST-API</em> enables developers to do so by adding request parameters which are introduced in the following subsections.</p>
 </div>
 <div class="sect2">
 <h3 id="_meta"><a class="anchor" href="#_meta"></a>5.1. Meta</h3>
 <div class="paragraph">
-<p>As mentioned above when getting all workspaces the responses are missing so-called <em>meta attributes</em> as <em>permissions</em>. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the <em>meta</em> query parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a <em>*</em> to include all attributes.</p>
+<p>As mentioned above when getting all workspaces the responses are missing so-called <em>meta attributes</em> as <em>permissions</em>. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the <em>meta</em> request parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a <em>*</em> to include all attributes.</p>
 </div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
@@ -3013,7 +3013,7 @@ The <em>SocioCortex REST-API</em> enables developers to do so by adding query pa
 <div class="sect2">
 <h3 id="_attributes"><a class="anchor" href="#_attributes"></a>5.2. Attributes</h3>
 <div class="paragraph">
-<p>In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the query parameter <em>attributes</em> is appended to the URI (see URI schema in <a href="#_introduction_to_demo_scenario">Introduction to demo scenario</a>). As for meta attributes, you either include a <em>*</em> for all attributes or a comma-separated list of attributes.</p>
+<p>In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the request parameter <em>attributes</em> is appended to the URI (see URI schema in <a href="#_introduction_to_demo_scenario">Introduction to demo scenario</a>). As for meta attributes, you either include a <em>*</em> for all attributes or a comma-separated list of attributes.</p>
 </div>
 <div class="paragraph">
 <p><strong>Examples:</strong></p>
@@ -3080,7 +3080,7 @@ The <em>SocioCortex REST-API</em> enables developers to do so by adding query pa
 * Search results: Retrieves a list of search hints containing full information, e.g., attributes of entities, meta information, and highlighted search hits.</p>
 </div>
 <div class="paragraph">
-<p>Both options allow developers to search by text, workspace, entityType or resource type. Additionally, the search results may also include all query parameters listed in <a href="#_query_parameters">Query Parameters</a>, e.g. (meta) attributes, and thus could contain the entire entity objects. The search hints are a limited data sample which can be helpful when implementing an autocompletion search or other use cases where the data samples to not necessarily have to contain all relevant attributes/information.</p>
+<p>Both options allow developers to search by text, workspace, entityType or resource type. Additionally, the search results may also include all query parameters listed in <a href="#Query Parameters">[Query Parameters]</a>, e.g. (meta) attributes, and thus could contain the entire entity objects. The search hints are a limited data sample which can be helpful when implementing an autocompletion search or other use cases where the data samples to not necessarily have to contain all relevant attributes/information.</p>
 </div>
 <div class="paragraph">
 <p>Moreover, search hints and results can be ordered by attributes in two directions (ascending, descending) and limited by number. For performance reasons for the search results endpoint a server-side pagination is also provided.</p>
@@ -3258,7 +3258,7 @@ The <em>SocioCortex REST-API</em> enables developers to do so by adding query pa
 <div class="sect2">
 <h3 id="_search_results"><a class="anchor" href="#_search_results"></a>6.2. Search results</h3>
 <div class="paragraph">
-<p>Besides the search hints functionality, the search results endpoint also offers the ability to append query parameters to refine custom attribute inclusion (for query parameters see <a href="#_query_parameters">Query Parameters</a>). As a result returned instances could contain all (meta) attributes or even the entire object with all attributes, tasks or relations. Consequently, the returned list needs to be limited in size to assure performance. The response object therefore contains a count of the total amount of results, but the result list only contains a max size of <em>n</em> results per <em>page</em>. These parameters can be manually set. For example if I want to retrieve 20 results per page and get the results of page 2 the following URI is to be requested:</p>
+<p>Besides the search hints functionality, the search results endpoint also offers the ability to append query parameters to refine custom attribute inclusion (for query parameters see <a href="#Query Parameters">[Query Parameters]</a>). As a result returned instances could contain all (meta) attributes or even the entire object with all attributes, tasks or relations. Consequently, the returned list needs to be limited in size to assure performance. The response object therefore contains a count of the total amount of results, but the result list only contains a max size of <em>n</em> results per <em>page</em>. These parameters can be manually set. For example if I want to retrieve 20 results per page and get the results of page 2 the following URI is to be requested:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3409,7 +3409,7 @@ This request puts it all together, workspace, resourceType, orderBy and attribut
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-08 15:30:14 CEST
+Last updated 2016-08-08 15:38:10 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">

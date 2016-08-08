@@ -2,11 +2,11 @@ When looking at the responses from the server you might have noticed that some r
 The reason for that is that by default when returning a list, the _SocioCortex REST-API_ includes only certain attributes in the returned objects. Thus, when getting all workspaces in <<Creating a workspace>> the list of results only contained the attributes _id_,_name_ and _href_. However, the response for a single workspace contained attributes such as _permissions_, _versions_ or _rootEntity_.
 The same applies to entities which we queried in <<Getting entities>>. Here, by querying single entities the self-defined attributes were included which we did not see when getting a list of entities.
 Now, when querying a list one might also be interested in certain attributes which are not by default included in the responded list, e.g. attributes you defined yourself.
-The _SocioCortex REST-API_ enables developers to do so by adding query parameters which are introduced in the following subsections.
+The _SocioCortex REST-API_ enables developers to do so by adding request parameters which are introduced in the following subsections.
 
 === Meta
 
-As mentioned above when getting all workspaces the responses are missing so-called _meta attributes_ as _permissions_. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the _meta_ query parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a _*_ to include all attributes.
+As mentioned above when getting all workspaces the responses are missing so-called _meta attributes_ as _permissions_. They are meta attributes as they are generated for every workspace or entity that is created in SocioCortex. By appending the _meta_ request parameter these can be manually included. Basically, you can either append a comma-separated list of attributes that are supposed to be included or simply add a _*_ to include all attributes.
 
 *Examples:*
 [source,bash]
@@ -21,7 +21,7 @@ Returns all workspaces and includes all meta attributes.
 
 === Attributes
 
-In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the query parameter _attributes_ is appended to the URI (see URI schema in <<Introduction to demo scenario>>). As for meta attributes, you either include a _*_ for all attributes or a comma-separated list of attributes.
+In order to include certain attributes (e.g. self-defined attributes) in the responded list of entities, the request parameter _attributes_ is appended to the URI (see URI schema in <<Introduction to demo scenario>>). As for meta attributes, you either include a _*_ for all attributes or a comma-separated list of attributes.
 
 *Examples:*
 [source,bash]
