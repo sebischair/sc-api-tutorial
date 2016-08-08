@@ -41,3 +41,7 @@ include::getting_started/tasks.adoc[]
 === Updating entities and entity types
 
 include::getting_started/update_entity_type.adoc[]
+
+=== Deleting instances
+
+include::getting_started/deletion.adoc[]

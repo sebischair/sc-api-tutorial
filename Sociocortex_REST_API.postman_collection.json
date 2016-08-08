@@ -852,6 +852,26 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE single workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}

@@ -1,6 +1,6 @@
 === Running your own SocioCortex server instance
 
-If you want to run your own SocioCortex server, start with the setup of the server by cloning the repository from https://bitbucket.org/sebischair/sociocortex and follow the instruction given in the Readme-section of the repository.
+If you want to run your own SocioCortex server, you'll find instructions and all necessary files for an on-premise installation https://server.sociocortex.com/pages/12nwc2038m7y3/Getting-started-with-SC-server-deployment[here].
 
 As you will work with a different server domain as the sebis SocioCortex server, you need to adjust all the URIs in the Postman collection throughout this tutorial and replace _server.sociocortex.com_ with your respective server url (e.g. if running the server locally _localhost:8083_).
 
@@ -10,7 +10,7 @@ If you want to work with the server instance provided by the sebis chair, you ca
 
 image::assets/server.png[caption="Figure 3: ", title="SocioCortex server", alt="SocioCortex server"]
 
-Alternatively, you can register over the REST-API itself as outlined in <<Authentication>>.
+Alternatively, you can register over the REST-API itself as outlined in the upcoming section <<Authentication>>.
 
 === Postman setup
 

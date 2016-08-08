@@ -1,5 +1,4 @@
 = SocioCortex Tutorial
-Daniel Elsner <daniel.elsner@tum.de>
 :toc: left
 :source-highlighter: highlightjs
 :sectanchors: true

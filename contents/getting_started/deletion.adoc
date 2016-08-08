@@ -1,0 +1,10 @@
+Deletion is generally not different to any of the other considered action except for the HTTP verb. For deleting instances (e.g. entities, entityTypes or workspaces), one can simply send the HTTP DELETE verb to a respective resource endpoint (i.e. URI).
+However, it is recommended to get first get an understanding of how SocioCortex handles deletion and what cascading deletion behavior one has to expect.
+
+An example for deleting the previously created workspace _publication management_ is the following:
+
+*Request:*
+[source,bash]
+DELETE https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+
+If deleting instances is important for you, there is a master thesis covering the deletion behavior more detailed, it can be downloaded https://wwwmatthes.in.tum.de/file/dzbsz5buctgj/Sebis-Public-Website/-/Master-s-Thesis-Tobias-Schrade/MT%20Tobias%20Schrade%20-%20Final%20Presentation.pdf[here] (see slide 9).
