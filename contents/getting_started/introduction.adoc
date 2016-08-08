@@ -13,6 +13,6 @@ While going through the demo scenario all HTTP verbs will be taken into account 
 
 Example URI for accessing all resources of type entityType within a workspace with a specific ID:
 
-image::assets/uri_schema.png[caption="Figure 3: ", title="URI Schema", alt="URI Schema"]
+image::assets/uri_schema.png[caption="Figure 4: ", title="URI Schema", alt="URI Schema"]
 
 Additionally, one can provide query parameters to further refine for instance the requested meta attributes. More on query parameters can be found in <<Query Parameters>>.

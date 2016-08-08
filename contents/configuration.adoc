@@ -8,7 +8,7 @@ As you will work with a different server domain as the sebis SocioCortex server,
 
 If you want to work with the server instance provided by the sebis chair, you can do so by simply registering on https://server.sociocortex.com (see image below).
 
-image::assets/server.png[caption="Figure 4: ", title="SocioCortex server", alt="SocioCortex server"]
+image::assets/server.png[caption="Figure 3: ", title="SocioCortex server", alt="SocioCortex server"]
 
 Alternatively, you can register over the REST-API itself as outlined in <<Authentication>>.
 

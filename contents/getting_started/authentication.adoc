@@ -32,7 +32,7 @@ BODY
 
 After having successfully send this information to the server, we check the respective provided email account for an email containing an activation link for _SocioCortex_.
 
-image::assets/activation_email.png[caption="Figure 4: ", title="Activation email", alt="Activation email"]
+image::assets/activation_email.png[caption="Figure 5: ", title="Activation email", alt="Activation email"]
 
 Once we click the link in the email, the account is activated and we are ready to go.
 

@@ -5,9 +5,9 @@ Accessibility rules can be inherited from the containing workspace or from paren
 
 In order to change the permissions to workspaces or certain entities, the REST-API or the server user interface (https://server.sociocortex.com) can be used:
 
-image::assets/permissions.png[caption="Figure 5: ", title="Set permissions of entity via UI", alt="Set permissions of entity via UI"]
+image::assets/permissions.png[caption="Figure 6: ", title="Set permissions of entity via UI", alt="Set permissions of entity via UI"]
 
-image::assets/workspace.png[caption="Figure 6: ", title="Set permissions of workspace via UI", alt="Set permissions of workspace via UI"]
+image::assets/workspace.png[caption="Figure 7: ", title="Set permissions of workspace via UI", alt="Set permissions of workspace via UI"]
 
 === Add reader to workspace
 
