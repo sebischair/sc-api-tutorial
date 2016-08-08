@@ -3224,11 +3224,11 @@ The <em>SocioCortex REST-API</em> enables developers to do so by adding query pa
 <div class="sect2">
 <h3 id="_search_results"><a class="anchor" href="#_search_results"></a>6.2. Search results</h3>
 <div class="paragraph">
-<p>Besides the search hints functionality, the search results endpoint also offers the ability to append query parameters to refine custom attribute inclusion (for query parameters see <a href="#_query_parameters">Query Parameters</a>). As a result returned instances could contain all (meta) attributes or even the entire object with all attributes, tasks or relations. Consequently, the returned list needs to be limited in size to assure performance. The response object therefore contains a count of the total amount of results, but the result list only contains a max size of <em>n</em> results per <em>page</em>. These query parameters can be manually set. For example if I want to retrieve 20 results per page and get the results of page 2 I the following URI is to be requested:</p>
+<p>Besides the search hints functionality, the search results endpoint also offers the ability to append query parameters to refine custom attribute inclusion (for query parameters see <a href="#_query_parameters">Query Parameters</a>). As a result returned instances could contain all (meta) attributes or even the entire object with all attributes, tasks or relations. Consequently, the returned list needs to be limited in size to assure performance. The response object therefore contains a count of the total amount of results, but the result list only contains a max size of <em>n</em> results per <em>page</em>. These parameters can be manually set. For example if I want to retrieve 20 results per page and get the results of page 2 the following URI is to be requested:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg&amp;page=3&amp;n=20</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg&amp;page=2&amp;n=20</code></pre>
 </div>
 </div>
 <div class="sect3">
