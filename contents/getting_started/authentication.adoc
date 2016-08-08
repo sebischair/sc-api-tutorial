@@ -40,7 +40,7 @@ Once we click the link in the email, the account is activated and we are ready t
 
 There are two ways to log in to _SocioCortex_, either by HTTP Basic authentication or by using JSON Web Tokens (JWT, https://jwt.io/). Throughout this tutorial we will be using the predefined HTTP requests from the Postman-Collection. Therefore, we encourage you to simply replace the placeholder _$TOKEN_ in all the Postman requests with your own JWT (see <<JWT>>).
 
-===== Basic Auth
+===== Basic auth
 
 Basic Auth requires to send a respective HTTP Authorization Header in every request to the server. This Authorization Header contains a username and password combined with a single colon and base64-encoded with a "Basic" prefix, denoting the authorization method. Thus, it does not require any cookies, session identifiers or tokens provided and signed by the server.
 
