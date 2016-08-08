@@ -1,5 +1,151 @@
+There are two endpoints in the _SocioCortex REST-API_ which offer the ability to search for instances of all types of classes that SocioCortex consists of:
+* Search hints: Retrieves a list of search hints containing basic information and a disambiguation of search hits.
+* Search results: Retrieves a list of search hints containing full information, e.g., attributes of entities, meta information, and highlighted search hits.
 
-=== Searching for entities
+Both options allow developers to search by text, workspace, entityType or resource type. Additionally, the search results may also include all query parameters listed in <<Query Parameters>>, e.g. (meta) attributes, and thus could contain the entire entity objects. The search hints are a limited data sample which can be helpful when implementing an autocompletion search or other use cases where the data samples to not necessarily have to contain all relevant attributes/information.
+
+Moreover, search hints and results can be ordered by attributes in two directions (ascending, descending) and limited by number. For performance reasons for the search results endpoint a server-side pagination is also provided.
+
+=== Search hints
+
+==== Searching for all instances in workspace
+Let's start by requesting all instances of classes in the workspace _publication management_.
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchHints?workspace=10sasph8dvxhg
+
+*Response:*
+[source,json]
+{
+  "totalCount": 8,
+  "hints": [
+    {
+      "id": "dt56spnul01p",
+      "disambiguation": "Publication Management",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "1bbxmsluu87f7",
+      "disambiguation": "Publication Management",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "19c48jgd4b8m2",
+      "disambiguation": "Publication Management",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "127trtufzdgcw",
+      "disambiguation": "/Publication Management/_",
+      "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+      "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw",
+      "resourceType": "entities"
+    },
+    {
+      "id": "10sasph8dvxhg",
+      "name": "Publication Management",
+      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
+      "resourceType": "workspaces"
+    },
+    {
+      "id": "pvv5b7tg2ave",
+      "disambiguation": "/Publication Management/_",
+      "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+      "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave",
+      "resourceType": "entities"
+    },
+    {
+      "id": "n6eidlmr0by7",
+      "disambiguation": "/Publication Management/_",
+      "name": "International Conference on Software Engineering",
+      "href": "https://server.sociocortex.com/api/v1/entities/n6eidlmr0by7",
+      "resourceType": "entities"
+    },
+    {
+      "id": "bqr7jmg37vqt",
+      "disambiguation": "Publication Management",
+      "name": "Publication Management - Home",
+      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
+      "resourceType": "entities"
+    }
+  ]
+}
+
+The response contains an object which tells us the total count of results for these search parameters and lists all results with their respective _resourceType_.
+
+==== Searching for text in all instances in workspace
+
+To further specify what is searched for, the _text_ query parameter can be appended to make a full-text search.
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchHints?workspace=10sasph8dvxhg&text=Information
+
+*Response:*
+[source,json]
+{
+  "totalCount": 1,
+  "hints": [
+    {
+      "id": "127trtufzdgcw",
+      "disambiguation": "/Publication Management/_",
+      "name": "Re16a - Lessons Learned in Aligning Data and Model Evolution in Collaborative Information Systems",
+      "href": "https://server.sociocortex.com/api/v1/entities/127trtufzdgcw",
+      "resourceType": "entities"
+    }
+  ]
+}
+
+==== Searching instances of resource type in workspace
+
+Sometimes it might be necessary to search for instances of a certain resource type.
+
+*Request:*
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchHints?workspace=10sasph8dvxhg&resourceType=entityTypes
+
+*Response:*
+[source,json]
+{
+  "totalCount": 3,
+  "hints": [
+    {
+      "id": "dt56spnul01p",
+      "disambiguation": "Publication Management",
+      "name": "Publication",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "1bbxmsluu87f7",
+      "disambiguation": "Publication Management",
+      "name": "Text Page",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
+      "resourceType": "entityTypes"
+    },
+    {
+      "id": "19c48jgd4b8m2",
+      "disambiguation": "Publication Management",
+      "name": "Conference",
+      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
+      "resourceType": "entityTypes"
+    }
+  ]
+}
+
+=== Search results
+
+Besides the search hints functionality, the search results endpoint also offers the ability to append query parameters to refine custom attribute inclusion (for query parameters see <<Query Parameters>>). As a result returned instances could contain all (meta) attributes or even the entire object with all attributes, tasks or relations. Consequently, the returned list needs to be limited in size to assure performance. The response object therefore contains a count of the total amount of results, but the result list only contains a max size of _n_ results per _page_. These query parameters can be manually set. For example if I want to retrieve 20 results per page and get the results of page 2 I the following URI is to be requested:
+
+[source,bash]
+GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg&page=3&n=20
 
 ==== Searching for entities in a workspace (GET)
 
@@ -57,66 +203,64 @@ GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg
   "totalCount": 7
 }
 
-==== Searching for entities with filter parameters (GET)
+==== Searching for entities with all attributes
+
+To include all attributes in the result list the _attributes_ parameter is appended to the search request URI.
+This request puts it all together, workspace, resourceType, orderBy and attribute filter
 *Request:*
 [source,bash]
-GET https://server.sociocortex.com/api/v1/searchResults?text=publication&workspace=10sasph8dvxhg&orderBy=alphabetically
+GET https://server.sociocortex.com/api/v1/searchResults?text=Collaboratively&workspace=10sasph8dvxhg&resourceType=entities&orderBy=alphabetically&attributes=*
 
 *Response:*
 [source,json]
 {
   "results": [
     {
-      "highlightedDisambiguation": "/<span class=\"sc-search-highlight\">Publication</span> Management/_",
-      "id": "24ixbhft7i4b",
-      "name": "A sample conference",
-      "href": "https://server.sociocortex.com/api/v1/entities/24ixbhft7i4b",
+      "isOverdue": false,
+      "progress": 100,
+      "id": "pvv5b7tg2ave",
+      "highlightedName": "Ha15a - Empowering End-Users to <span class=\"sc-search-highlight\">Collaboratively</span> Structure Processes for Knowledge Work",
+      "name": "Ha15a - Empowering End-Users to Collaboratively Structure Processes for Knowledge Work",
+      "isInconsistent": false,
+      "attributes": [
+        {
+          "id": "1fxaj2nfs3yp9",
+          "values": [
+            {
+              "id": "1d94htksgwy2i",
+              "name": "Matheus Hauder",
+              "href": "https://server.sociocortex.com/api/v1/users/1d94htksgwy2i"
+            }
+          ],
+          "name": "authors",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1fxaj2nfs3yp9"
+        },
+        {
+          "id": "1nnq4l3r7xiez",
+          "values": [
+            "Accepted"
+          ],
+          "name": "Status",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1nnq4l3r7xiez"
+        },
+        {
+          "id": "1r36ijukwwbtf",
+          "values": [],
+          "name": "acceptedIn",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1r36ijukwwbtf"
+        },
+        {
+          "id": "1rc9u2if7o62m",
+          "values": [
+            "Knowledge work is becoming the predominant type of work in many countries and is involved in the most important processes in organizations. ..."
+          ],
+          "name": "Abstract",
+          "href": "https://server.sociocortex.com/api/v1/attributes/1rc9u2if7o62m"
+        }
+      ],
+      "href": "https://server.sociocortex.com/api/v1/entities/pvv5b7tg2ave",
       "resourceType": "entities"
-    },
-    {
-      "highlightedDisambiguation": "/<span class=\"sc-search-highlight\">Publication</span> Management/_",
-      "id": "15qr31m7ewuje",
-      "name": "A sample paper",
-      "href": "https://server.sociocortex.com/api/v1/entities/15qr31m7ewuje",
-      "resourceType": "entities"
-    },
-    {
-      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
-      "id": "19c48jgd4b8m2",
-      "name": "Conference",
-      "href": "https://server.sociocortex.com/api/v1/entityTypes/19c48jgd4b8m2",
-      "resourceType": "entityTypes"
-    },
-    {
-      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
-      "id": "dt56spnul01p",
-      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span>",
-      "name": "Publication",
-      "href": "https://server.sociocortex.com/api/v1/entityTypes/dt56spnul01p",
-      "resourceType": "entityTypes"
-    },
-    {
-      "id": "10sasph8dvxhg",
-      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span> Management",
-      "name": "Publication Management",
-      "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg",
-      "resourceType": "workspaces"
-    },
-    {
-      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
-      "id": "bqr7jmg37vqt",
-      "highlightedName": "<span class=\"sc-search-highlight\">Publication</span> Management - Home",
-      "name": "Publication Management - Home",
-      "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt",
-      "resourceType": "entities"
-    },
-    {
-      "highlightedDisambiguation": "<span class=\"sc-search-highlight\">Publication</span> Management",
-      "id": "1bbxmsluu87f7",
-      "name": "Text Page",
-      "href": "https://server.sociocortex.com/api/v1/entityTypes/1bbxmsluu87f7",
-      "resourceType": "entityTypes"
     }
   ],
-  "totalCount": 7
+  "totalCount": 1
 }

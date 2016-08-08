@@ -437,6 +437,26 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "GET all entities with all attributes (query parameter)",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces/$WORKSPACE_ID/entities?attributes=*",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -561,9 +581,9 @@
 			"description": "",
 			"item": [
 				{
-					"name": "GET search for entities in workspace",
+					"name": "GET search results for instances in workspace",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg",
+						"url": "https://server.sociocortex.com/api/v1/searchResults?workspace=$WORKSPACE_ID",
 						"method": "GET",
 						"header": [
 							{
@@ -581,9 +601,69 @@
 					"response": []
 				},
 				{
-					"name": "GET search for entities with parameters",
+					"name": "GET search results for entities in workspace with text, orderBy, resourceType and attribute filter",
 					"request": {
-						"url": "https://server.sociocortex.com/api/v1/searchResults?text=publication&workspace=10sasph8dvxhg&orderBy=alphabetically",
+						"url": "https://server.sociocortex.com/api/v1/searchResults?text=Collaboratively&workspace=$WORKSPACE_ID&resourceType=entities&orderBy=alphabetically&attributes=*",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET search hints for instances in workspace with text filter",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/searchHints?workspace=$WORKSPACE_ID&text=Information",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET search hints for instances in workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/searchHints?workspace=$WORKSPACE_ID",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET search hints for instances of resource type in workspace",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/searchHints?workspace=$WORKSPACE_ID&resourceType=entityTypes",
 						"method": "GET",
 						"header": [
 							{
@@ -748,6 +828,26 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"permissions\": {\n        \"readers\": [{\n            \"id\": \"$USER_ID\"\n        }]\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET all workspaces with all meta attributes (query parameter)",
+					"request": {
+						"url": "https://server.sociocortex.com/api/v1/workspaces?meta=*",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer $TOKEN",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
 						},
 						"description": ""
 					},

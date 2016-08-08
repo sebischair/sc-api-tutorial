@@ -9,7 +9,7 @@ image::assets/permissions.png[caption="Figure 5: ", title="Set permissions of en
 
 image::assets/workspace.png[caption="Figure 6: ", title="Set permissions of workspace via UI", alt="Set permissions of workspace via UI"]
 
-=== Add Reader to Workspace
+=== Add reader to workspace
 
 For the _SocioCortex REST-API_, we take the workspace created in <<Creating a workspace>> and add another reader to the workspace. In our case this is a user with the id _aosqsp1qsrfa_ which we simply add to the array of readers in the permissions object.
 
@@ -66,7 +66,7 @@ BODY
   "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
 }
 
-=== Add Editor to Workspace
+=== Add editor to workspace
 
 *Request:*
 [source, bash]
