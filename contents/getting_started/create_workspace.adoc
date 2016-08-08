@@ -133,3 +133,5 @@ GET https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
   "mayEdit": true,
   "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
 }
+
+There are some attributes which are obvious and some that will be introduced throughout the tutorial. In <<Permissions>> the concept of read/write accessibility is further discussed.

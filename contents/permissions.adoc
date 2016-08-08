@@ -1,2 +1,128 @@
-* Writers - additiv
-* Readers - substraktiv
+In <<Getting started with the REST-API>> the permissions were shortly mentioned. In this section the underlying concept of accessibility is explained more precisely.
+There are three types of accessibility rights: read, edit and contribute permissions.
+Editors can read and edit pages and their attachments. In addition to editors, readers have read-only access to pages which do not override this setting. Contributors are allowed to create new pages in respective workspaces. They may only read/edit pages to which they are explicitly assigned as readers/editors.
+Accessibility rules can be inherited from the containing workspace or from parent entities. By default, newly created entities will inherit readers and editors from their workspace.
+
+In order to change the permissions to workspaces or certain entities, the REST-API or the server user interface (https://server.sociocortex.com) can be used:
+
+image::assets/permissions.png[caption="Figure 5: ", title="Set permissions of entity via UI", alt="Set permissions of entity via UI"]
+
+image::assets/workspace.png[caption="Figure 6: ", title="Set permissions of workspace via UI", alt="Set permissions of workspace via UI"]
+
+=== Add Reader to Workspace
+
+For the _SocioCortex REST-API_, we take the workspace created in <<Creating a workspace>> and add another reader to the workspace. In our case this is a user with the id _aosqsp1qsrfa_ which we simply add to the array of readers in the permissions object.
+
+*Request:*
+[source, bash]
+PUT https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+BODY
+{
+    "permissions": {
+        "readers": [{
+            "id": "aosqsp1qsrfa"
+        }]
+    }
+}
+
+*Response:*
+[source, json]
+{
+  "id": "10sasph8dvxhg",
+  "versions": ["..."],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [],
+    "readers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ]
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}
+
+=== Add Editor to Workspace
+
+*Request:*
+[source, bash]
+PUT https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+BODY
+{
+    "permissions": {
+        "writers": [{
+            "id": "aosqsp1qsrfa"
+        }]
+    }
+}
+
+*Response:*
+[source, json]
+{
+  "id": "10sasph8dvxhg",
+  "versions": ["..."],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ],
+    "readers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ]
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}

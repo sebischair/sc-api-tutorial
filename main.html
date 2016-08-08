@@ -456,7 +456,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_updating_entities_and_entity_types">3.11. Updating entities and entity types</a></li>
 </ul>
 </li>
-<li><a href="#_permisssions">4. Permisssions</a></li>
+<li><a href="#_permissions">4. Permissions</a>
+<ul class="sectlevel2">
+<li><a href="#_add_reader_to_workspace">4.1. Add Reader to Workspace</a></li>
+<li><a href="#_add_editor_to_workspace">4.2. Add Editor to Workspace</a></li>
+</ul>
+</li>
 <li><a href="#_query_parameters">5. Query Parameters</a></li>
 <li><a href="#_searching">6. Searching</a>
 <ul class="sectlevel2">
@@ -944,6 +949,9 @@ BODY
   "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
 }</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>There are some attributes which are obvious and some that will be introduced throughout the tutorial. In <a href="#_permissions">Permissions</a> the concept of read/write accessibility is further discussed.</p>
 </div>
 </div>
 </div>
@@ -2763,17 +2771,165 @@ BODY
 </div>
 </div>
 <div class="sect1">
-<h2 id="_permisssions"><a class="anchor" href="#_permisssions"></a>4. Permisssions</h2>
+<h2 id="_permissions"><a class="anchor" href="#_permissions"></a>4. Permissions</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Writers - additiv</p>
-</li>
-<li>
-<p>Readers - substraktiv</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>In <a href="#_getting_started_with_the_rest_api">Getting started with the REST-API</a> the permissions were shortly mentioned. In this section the underlying concept of accessibility is explained more precisely.
+There are three types of accessibility rights: read, edit and contribute permissions.
+Editors can read and edit pages and their attachments. In addition to editors, readers have read-only access to pages which do not override this setting. Contributors are allowed to create new pages in respective workspaces. They may only read/edit pages to which they are explicitly assigned as readers/editors.
+Accessibility rules can be inherited from the containing workspace or from parent entities. By default, newly created entities will inherit readers and editors from their workspace.</p>
+</div>
+<div class="paragraph">
+<p>In order to change the permissions to workspaces or certain entities, the REST-API or the server user interface (<a href="https://server.sociocortex.com" class="bare">https://server.sociocortex.com</a>) can be used:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/permissions.png" alt="Set permissions of entity via UI">
+</div>
+<div class="title">Figure 5: Set permissions of entity via UI</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/workspace.png" alt="Set permissions of workspace via UI">
+</div>
+<div class="title">Figure 6: Set permissions of workspace via UI</div>
+</div>
+<div class="sect2">
+<h3 id="_add_reader_to_workspace"><a class="anchor" href="#_add_reader_to_workspace"></a>4.1. Add Reader to Workspace</h3>
+<div class="paragraph">
+<p>For the <em>SocioCortex REST-API</em>, we take the workspace created in <a href="#_creating_a_workspace">Creating a workspace</a> and add another reader to the workspace. In our case this is a user with the id <em>aosqsp1qsrfa</em> which we simply add to the array of readers in the permissions object.</p>
+</div>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">PUT https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+BODY
+{
+    "permissions": {
+        "readers": [{
+            "id": "aosqsp1qsrfa"
+        }]
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "id": "10sasph8dvxhg",
+  "versions": ["..."],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [],
+    "readers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ]
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_editor_to_workspace"><a class="anchor" href="#_add_editor_to_workspace"></a>4.2. Add Editor to Workspace</h3>
+<div class="paragraph">
+<p><strong>Request:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash" data-lang="bash">PUT https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg
+BODY
+{
+    "permissions": {
+        "writers": [{
+            "id": "aosqsp1qsrfa"
+        }]
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Response:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json" data-lang="json">{
+  "id": "10sasph8dvxhg",
+  "versions": ["..."],
+  "rootEntity": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "mayCreateEntities": true,
+  "isFavorite": false,
+  "entityTree": {
+    "id": "bqr7jmg37vqt",
+    "name": "Publication Management - Home",
+    "href": "https://server.sociocortex.com/api/v1/entities/bqr7jmg37vqt"
+  },
+  "name": "Publication Management",
+  "permissions": {
+    "contributors": [],
+    "administrators": [
+      {
+        "id": "$USER_ID",
+        "name": "$NAME",
+        "href": "https://server.sociocortex.com/api/v1/users/$USER_ID"
+      }
+    ],
+    "writers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ],
+    "readers": [
+      {
+        "id": "aosqsp1qsrfa",
+        "name": "daniel",
+        "href": "https://server.sociocortex.com/api/v1/users/aosqsp1qsrfa"
+      }
+    ]
+  },
+  "customFunctions": [],
+  "mayEdit": true,
+  "href": "https://server.sociocortex.com/api/v1/workspaces/10sasph8dvxhg"
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2951,7 +3107,7 @@ BODY
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-07 15:41:46 CEST
+Last updated 2016-08-07 16:57:13 CEST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
