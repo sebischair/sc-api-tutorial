@@ -6,6 +6,8 @@ Both options allow developers to search by text, workspace, entityType or resour
 
 Moreover, search hints and results can be ordered by attributes in two directions (ascending, descending) and limited by number. For performance reasons for the search results endpoint a server-side pagination is also provided.
 
+For a complete list of filter parameters have a look at the REST-API specification which can be found http://www.sociocortex.com/documentation/#!/search[here].
+
 === Search hints
 
 ==== Searching for all instances in workspace
@@ -147,6 +149,7 @@ Besides the search hints functionality, the search results endpoint also offers 
 [source,bash]
 GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg&page=3&n=20
 
+
 ==== Searching for entities in a workspace (GET)
 
 *Request:*
@@ -206,7 +209,8 @@ GET https://server.sociocortex.com/api/v1/searchResults?workspace=10sasph8dvxhg
 ==== Searching for entities with all attributes
 
 To include all attributes in the result list the _attributes_ parameter is appended to the search request URI.
-This request puts it all together, workspace, resourceType, orderBy and attribute filter
+This request puts it all together, workspace, resourceType, orderBy and attribute filter.
+
 *Request:*
 [source,bash]
 GET https://server.sociocortex.com/api/v1/searchResults?text=Collaboratively&workspace=10sasph8dvxhg&resourceType=entities&orderBy=alphabetically&attributes=*
