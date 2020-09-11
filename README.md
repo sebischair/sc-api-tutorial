@@ -1,6 +1,6 @@
 # sc-api-tutorial
 
-This project is built with Asciidoctor (http://asciidoctor.org/) which requires Ruby. It is written in Ruby, packaged as a RubyGem.
+This project is a tutorial contains instruction on how to call the APIs of sociocortex, and descriptions of the architecture, classes and data types. It is built with Asciidoctor (http://asciidoctor.org/) which requires Ruby. It is written in Ruby, packaged as a RubyGem.
 
 ### Install with Bundler
 ```shell
